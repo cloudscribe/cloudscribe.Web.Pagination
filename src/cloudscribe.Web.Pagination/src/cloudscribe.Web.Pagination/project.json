@@ -5,10 +5,10 @@
   "authors": [ "Joe Audette" ],
   "owners": [ "Source Tree Solutions" ],
   "tags": [ "cloudscribe","mvc6","pagination","navigation","bootstrap" ],
-  "projectUrl": "https://github.com/joeaudette/cloudscribe",
+  "projectUrl": "https://github.com/joeaudette/cloudscribe.Web.Pagination",
   "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
   "copyright": "2015 Source Tree Solutions",
-  "iconUrl": "http://download.mojoportal.com/images/cloudscribe-rocket-32.png",
+  "iconUrl": "https://raw.githubusercontent.com/joeaudette/cloudscribe.Web.Pagination/master/cloudscribe-icon-32.png",
   "requireLicenseAcceptance": false,
   "releaseNotes": "",
 
