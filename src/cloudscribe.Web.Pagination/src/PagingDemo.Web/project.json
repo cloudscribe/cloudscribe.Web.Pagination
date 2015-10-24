@@ -4,16 +4,9 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "EntityFramework.Commands": "7.0.0-beta8",
-    "EntityFramework.SqlServer": "7.0.0-beta8",
+    "cloudscribe.Web.Pagination": "1.0.0-*",
     "Microsoft.AspNet.Authentication.Cookies": "1.0.0-beta8",
-    "Microsoft.AspNet.Authentication.Facebook": "1.0.0-beta8",
-    "Microsoft.AspNet.Authentication.Google": "1.0.0-beta8",
-    "Microsoft.AspNet.Authentication.MicrosoftAccount": "1.0.0-beta8",
-    "Microsoft.AspNet.Authentication.Twitter": "1.0.0-beta8",
-    "Microsoft.AspNet.Diagnostics": "1.0.0-beta8",
-    "Microsoft.AspNet.Diagnostics.Entity": "7.0.0-beta8",
-    "Microsoft.AspNet.Identity.EntityFramework": "3.0.0-beta8",
+    "Microsoft.AspNet.Diagnostics": "1.0.0-beta8", 
     "Microsoft.AspNet.IISPlatformHandler": "1.0.0-beta8",
     "Microsoft.AspNet.Mvc": "6.0.0-beta8",
     "Microsoft.AspNet.Mvc.TagHelpers": "6.0.0-beta8",
@@ -25,13 +18,13 @@
     "Microsoft.Framework.Configuration.UserSecrets": "1.0.0-beta8",
     "Microsoft.Framework.Logging": "1.0.0-beta8",
     "Microsoft.Framework.Logging.Console": "1.0.0-beta8",
-    "Microsoft.Framework.Logging.Debug" : "1.0.0-beta8",
+    "Microsoft.Framework.Logging.Debug": "1.0.0-beta8",
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-beta8"
   },
 
   "commands": {
-    "web": "Microsoft.AspNet.Server.Kestrel",
-    "ef": "EntityFramework.Commands"
+    "web": "Microsoft.AspNet.Server.Kestrel"
+    
   },
 
   "frameworks": {

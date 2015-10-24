@@ -2,21 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Authentication.Facebook;
-using Microsoft.AspNet.Authentication.Google;
-using Microsoft.AspNet.Authentication.MicrosoftAccount;
-using Microsoft.AspNet.Authentication.Twitter;
 using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Diagnostics.Entity;
 using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Data.Entity;
 using Microsoft.Dnx.Runtime;
 using Microsoft.Framework.Configuration;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
-using PagingDemo.Web.Models;
-using PagingDemo.Web.Services;
+
 
 namespace PagingDemo.Web
 {
@@ -47,15 +39,15 @@ namespace PagingDemo.Web
         public void ConfigureServices(IServiceCollection services)
         {
             // Add Entity Framework services to the services container.
-            services.AddEntityFramework()
-                .AddSqlServer()
-                .AddDbContext<ApplicationDbContext>(options =>
-                    options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+            //services.AddEntityFramework()
+            //    .AddSqlServer()
+            //    .AddDbContext<ApplicationDbContext>(options =>
+            //        options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
-            // Add Identity services to the services container.
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+            //// Add Identity services to the services container.
+            //services.AddIdentity<ApplicationUser, IdentityRole>()
+            //    .AddEntityFrameworkStores<ApplicationDbContext>()
+            //    .AddDefaultTokenProviders();
 
             // Add MVC services to the services container.
             services.AddMvc();
@@ -65,8 +57,8 @@ namespace PagingDemo.Web
             // services.AddWebApiConventions();
 
             // Register application services.
-            services.AddTransient<IEmailSender, AuthMessageSender>();
-            services.AddTransient<ISmsSender, AuthMessageSender>();
+            //services.AddTransient<IEmailSender, AuthMessageSender>();
+            //services.AddTransient<ISmsSender, AuthMessageSender>();
         }
 
         // Configure is called after ConfigureServices is called.
@@ -83,7 +75,7 @@ namespace PagingDemo.Web
             {
                 app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage(DatabaseErrorPageOptions.ShowAll);
+                
             }
             else
             {
@@ -99,7 +91,7 @@ namespace PagingDemo.Web
             app.UseStaticFiles();
 
             // Add cookie-based authentication to the request pipeline.
-            app.UseIdentity();
+            //app.UseIdentity();
 
             // Add and configure the options for authentication middleware to the request pipeline.
             // You can add options for middleware as shown below.
