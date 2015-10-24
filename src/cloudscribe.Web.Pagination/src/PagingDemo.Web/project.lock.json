@@ -1582,6 +1582,7 @@
           "Microsoft.CSharp": "4.0.1-beta-23409",
           "System.Collections": "4.0.11-beta-23409",
           "System.Linq": "4.0.1-beta-23409",
+          "System.Linq.Queryable": "4.0.1-beta-23409",
           "System.Runtime": "4.0.21-beta-23409",
           "System.Threading": "4.0.11-beta-23409"
         }
@@ -3284,6 +3285,24 @@
         },
         "runtime": {
           "lib/DNXCore50/System.Linq.Expressions.dll": {}
+        }
+      },
+      "System.Linq.Queryable/4.0.1-beta-23409": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Linq": "4.0.0",
+          "System.Linq.Expressions": "4.0.10",
+          "System.Reflection": "4.0.10",
+          "System.Reflection.Extensions": "4.0.0",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20"
+        },
+        "compile": {
+          "ref/dotnet/System.Linq.Queryable.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/System.Linq.Queryable.dll": {}
         }
       },
       "System.Net.Primitives/4.0.11-beta-23409": {
@@ -7019,6 +7038,7 @@
           "Microsoft.CSharp": "4.0.1-beta-23409",
           "System.Collections": "4.0.11-beta-23409",
           "System.Linq": "4.0.1-beta-23409",
+          "System.Linq.Queryable": "4.0.1-beta-23409",
           "System.Runtime": "4.0.21-beta-23409",
           "System.Threading": "4.0.11-beta-23409"
         }
@@ -8950,6 +8970,24 @@
           "lib/DNXCore50/System.Linq.Expressions.dll": {}
         }
       },
+      "System.Linq.Queryable/4.0.1-beta-23409": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Linq": "4.0.0",
+          "System.Linq.Expressions": "4.0.10",
+          "System.Reflection": "4.0.10",
+          "System.Reflection.Extensions": "4.0.0",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20"
+        },
+        "compile": {
+          "ref/dotnet/System.Linq.Queryable.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/System.Linq.Queryable.dll": {}
+        }
+      },
       "System.Net.Primitives/4.0.11-beta-23409": {
         "type": "package",
         "dependencies": {
@@ -9610,6 +9648,7 @@
           "Microsoft.CSharp": "4.0.1-beta-23409",
           "System.Collections": "4.0.11-beta-23409",
           "System.Linq": "4.0.1-beta-23409",
+          "System.Linq.Queryable": "4.0.1-beta-23409",
           "System.Runtime": "4.0.21-beta-23409",
           "System.Threading": "4.0.11-beta-23409"
         }
@@ -11539,6 +11578,24 @@
         },
         "runtime": {
           "lib/DNXCore50/System.Linq.Expressions.dll": {}
+        }
+      },
+      "System.Linq.Queryable/4.0.1-beta-23409": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Linq": "4.0.0",
+          "System.Linq.Expressions": "4.0.10",
+          "System.Reflection": "4.0.10",
+          "System.Reflection.Extensions": "4.0.0",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20"
+        },
+        "compile": {
+          "ref/dotnet/System.Linq.Queryable.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/System.Linq.Queryable.dll": {}
         }
       },
       "System.Net.Primitives/4.0.11-beta-23409": {
@@ -14832,6 +14889,39 @@
         "System.Linq.Expressions.4.0.11-beta-23409.nupkg",
         "System.Linq.Expressions.4.0.11-beta-23409.nupkg.sha512",
         "System.Linq.Expressions.nuspec"
+      ]
+    },
+    "System.Linq.Queryable/4.0.1-beta-23409": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "OPR/L19WOPcykLFxxRsH1wCDBwFK04lyudvvOOLqVmmK68LgXx/VqjLPcCsalJxEq0XiRIcGXxxx6gPTgzpgaw==",
+      "files": [
+        "lib/dotnet/de/System.Linq.Queryable.xml",
+        "lib/dotnet/es/System.Linq.Queryable.xml",
+        "lib/dotnet/fr/System.Linq.Queryable.xml",
+        "lib/dotnet/it/System.Linq.Queryable.xml",
+        "lib/dotnet/ja/System.Linq.Queryable.xml",
+        "lib/dotnet/ko/System.Linq.Queryable.xml",
+        "lib/dotnet/ru/System.Linq.Queryable.xml",
+        "lib/dotnet/System.Linq.Queryable.dll",
+        "lib/dotnet/System.Linq.Queryable.xml",
+        "lib/dotnet/zh-hans/System.Linq.Queryable.xml",
+        "lib/dotnet/zh-hant/System.Linq.Queryable.xml",
+        "lib/net45/_._",
+        "lib/netcore50/System.Linq.Queryable.dll",
+        "lib/netcore50/System.Linq.Queryable.xml",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "ref/dotnet/System.Linq.Queryable.dll",
+        "ref/net45/_._",
+        "ref/netcore50/System.Linq.Queryable.dll",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "System.Linq.Queryable.4.0.1-beta-23409.nupkg",
+        "System.Linq.Queryable.4.0.1-beta-23409.nupkg.sha512",
+        "System.Linq.Queryable.nuspec"
       ]
     },
     "System.Net.Primitives/4.0.11-beta-23409": {

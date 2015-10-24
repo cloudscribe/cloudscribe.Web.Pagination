@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2015-07-02
-// Last Modified:			2015-10-17
+// Last Modified:			2015-10-24
 // 
 
 using Microsoft.AspNet.Mvc.ViewFeatures;
@@ -17,9 +17,13 @@ using System.Text;
 namespace cloudscribe.Web.Pagination
 {
     [HtmlTargetElement("cs-pager", Attributes = PagingInfoAttributeName)]
+    [HtmlTargetElement("cs-pager", Attributes = "cs-paging-pagenumber,cs-paging-totalitems")]
     public class PagerTagHelper : TagHelper
     {
         private const string PagingInfoAttributeName = "cs-paging-info";
+        private const string PageSizeAttributeName = "cs-paging-pagesize";
+        private const string PageNumberAttributeName = "cs-paging-pagenumber";
+        private const string TotalItemsAttributeName = "cs-paging-totalitems";
         private const string AjaxTargetAttributeName = "cs-ajax-target";
         private const string AjaxModeAttributeName = "cs-ajax-mode";
         private const string PageNumberParamAttributeName = "cs-pagenumber-param";
@@ -45,8 +49,17 @@ namespace cloudscribe.Web.Pagination
         protected IHtmlGenerator Generator { get; }
 
         [HtmlAttributeName(PagingInfoAttributeName)]
-        public PaginationSettings PagingModel { get; set; }
-        
+        public PaginationSettings PagingModel { get; set; } = null;
+
+        [HtmlAttributeName(PageSizeAttributeName)]
+        public int PageSize { get; set; } = 10;
+
+        [HtmlAttributeName(PageNumberAttributeName)]
+        public int PageNumber { get; set; } = 1;
+
+        [HtmlAttributeName(TotalItemsAttributeName)]
+        public int TotalItems { get; set; } = 1;
+
         [HtmlAttributeName(AjaxTargetAttributeName)]
         public string AjaxTarget { get; set; } = string.Empty;
 
@@ -150,8 +163,11 @@ namespace cloudscribe.Web.Pagination
           
             if(PagingModel == null) 
             {
-                output.SuppressOutput();
-                return;
+                // allow for passing in the settings separately
+                PagingModel = new PaginationSettings();
+                PagingModel.CurrentPage = PageNumber;
+                PagingModel.ItemsPerPage = PageSize;
+                PagingModel.TotalItems = TotalItems;
             }
             int totalPages = (int)Math.Ceiling(PagingModel.TotalItems / (double)PagingModel.ItemsPerPage);
             // don't render if only 1 page 
