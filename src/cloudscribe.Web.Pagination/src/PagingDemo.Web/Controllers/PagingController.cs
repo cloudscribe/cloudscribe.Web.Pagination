@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using PagingDemo.Web.Models;
+using PagingDemo.Web.ViewModels;
 using cloudscribe.Web.Pagination;
 
 
@@ -46,7 +47,23 @@ namespace PagingDemo.Web.Controllers
             int currentPageIndex = page.HasValue ? page.Value - 1 : 0;
             return View(this.allProducts.ToPagedList(currentPageIndex, DefaultPageSize));
 
-            //return View();
+            
+        }
+
+        public IActionResult ProductList(int? pageNumber, int? pageSize)
+        {
+            int currentPageIndex = pageNumber.HasValue ? pageNumber.Value - 1 : 0;
+            int itemsPerPage = pageSize.HasValue ? pageSize.Value : DefaultPageSize;
+
+            var model = new ProductListViewModel();
+            model.Products = this.allProducts.ToPagedList(currentPageIndex, itemsPerPage);
+            model.Paging.CurrentPage = pageNumber.HasValue ? pageNumber.Value : 1;
+            model.Paging.ItemsPerPage = itemsPerPage;
+            model.Paging.TotalItems = model.Products.TotalItemCount;
+
+            return View(model);
+
+
         }
 
     }
