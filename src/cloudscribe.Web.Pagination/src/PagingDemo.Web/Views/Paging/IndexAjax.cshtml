@@ -1,0 +1,25 @@
+﻿@using PagingDemo.Web.Models
+@model IPagedList<Product>
+@{
+    ViewBag.Title = "Browse all products (ajax)";
+}
+<h2>@ViewBag.Title</h2>
+<div id="gridcontainer">
+    @Html.Partial("_ProductGrid", Model)
+</div>
+
+@section Scripts {
+
+    <environment names="Development">
+        <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+        
+        <script src="~/jsdev/cloudscribe-modaldialog-bootstrap.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+        
+        <script src="~/jsdev/cloudscribe-modaldialog-bootstrap.js"></script>
+    </environment>
+
+
+}

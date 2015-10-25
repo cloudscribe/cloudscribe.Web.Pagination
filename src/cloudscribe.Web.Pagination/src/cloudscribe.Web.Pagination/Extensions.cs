@@ -2,11 +2,12 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2015-10-12
-// Last Modified:			2015-10-12
+// Last Modified:			2015-10-25
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace cloudscribe.Web.Pagination
@@ -33,6 +34,21 @@ namespace cloudscribe.Web.Pagination
             }
 
             return list;
+        }
+
+        public static string ToCsv(this string[] arr)
+        {
+            StringBuilder sb = new StringBuilder();
+            string comma = string.Empty;
+            foreach(string s in arr)
+            {
+                sb.Append(comma);
+                sb.Append(s);
+                comma = ",";
+            }
+
+            return sb.ToString();
+            //return arr.
         }
     }
 }

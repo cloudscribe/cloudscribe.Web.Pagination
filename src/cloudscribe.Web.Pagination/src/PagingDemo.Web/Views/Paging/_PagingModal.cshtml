@@ -1,0 +1,24 @@
+﻿@using PagingDemo.Web.Models
+@model IPagedList<Product>
+@{
+    ViewBag.Title = "Browse all products (ajax)";
+}
+
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="CommonResources.Close"><span aria-hidden="true">&times;</span></button>
+            <h2 class="modal-title" id="myModalLabel">My Modal</h2>
+        </div>
+        <div class="modal-body">
+            <h3>@ViewBag.Title</h3>
+
+            <div id="gridcontainer">
+                @{await Html.RenderPartialAsync("_ProductGrid", Model); }
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>

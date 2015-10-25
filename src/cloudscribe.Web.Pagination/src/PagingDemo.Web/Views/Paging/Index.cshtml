@@ -4,6 +4,11 @@
     ViewBag.Title = "Browse all products with Model";
 }
 <h2>@ViewBag.Title</h2>
+<p>
+    <a class="btn btn-xs btn-default" asp-action="IndexAjax" asp-controller="Paging"
+       
+       bs-modal-link="true">Ajax Modal</a>
+</p>
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -29,3 +34,19 @@
               asp-action="Index" 
               asp-route-pagesize="@Model.PageSize"></cs-pager>
 </div>
+
+@section Scripts {
+
+    <environment names="Development">
+        <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+
+        <script src="~/jsdev/cloudscribe-modaldialog-bootstrap.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+
+        <script src="~/jsdev/cloudscribe-modaldialog-bootstrap.js"></script>
+    </environment>
+
+
+}

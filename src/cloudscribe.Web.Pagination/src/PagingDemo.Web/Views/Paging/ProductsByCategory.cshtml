@@ -1,0 +1,48 @@
+﻿@using PagingDemo.Web.Models
+@model IPagedList<Product>
+@{
+    ViewBag.Title = "Browse products by category";
+}
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("ViewByCategory", "Paging", FormMethod.Get))
+{
+    <p>
+        Select a category:
+        @Html.DropDownList("categoryName")
+        <input type="submit" value="Browse" />
+    </p>
+}
+@if (Model.Count() > 0)
+{
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Product name</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.Category</td>
+                </tr>}
+        </tbody>
+    </table>
+        <div> 
+            <cs-pager cs-paging-pagesize="@Model.PageSize"
+                      cs-paging-pagenumber="@Model.PageNumber"
+                      cs-paging-totalitems="@Model.TotalItemCount"
+                      cs-pagenumber-param="page"
+                      asp-controller="Paging"
+                      asp-action="ViewByCategory"
+                      asp-route-categoryname="@ViewBag.CategoryDisplayName"
+                      asp-route-pagesize="@Model.PageSize"></cs-pager>
+ 
+        </div>
+        <div>
+            Displaying @Model.ItemStart - @Model.ItemEnd of @Model.TotalItemCount item(s)
+        </div>
+        
+}
