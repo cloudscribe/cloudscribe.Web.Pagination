@@ -14,6 +14,8 @@ namespace PagingDemo.Web.ViewModels
             Paging = new PaginationSettings();
         }
 
+        public string Query { get; set; } = string.Empty;
+
         public IPagedList<Product> Products { get; set; } = null;
 
         public PaginationSettings Paging { get; set; }

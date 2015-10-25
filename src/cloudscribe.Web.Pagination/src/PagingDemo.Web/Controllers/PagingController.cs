@@ -51,16 +51,24 @@ namespace PagingDemo.Web.Controllers
             
         }
 
-        public IActionResult ProductList(int? pageNumber, int? pageSize)
+        public IActionResult ProductList(
+            int? pageNumber, 
+            int? pageSize,
+            string query = "")
         {
             int currentPageIndex = pageNumber.HasValue ? pageNumber.Value - 1 : 0;
             int itemsPerPage = pageSize.HasValue ? pageSize.Value : DefaultPageSize;
 
             var model = new ProductListViewModel();
-            model.Products = this.allProducts.ToPagedList(currentPageIndex, itemsPerPage);
+
+            model.Products = this.allProducts.Where(p => 
+            p.Category.StartsWith(query)
+            ).ToPagedList(currentPageIndex, itemsPerPage);
+
             model.Paging.CurrentPage = pageNumber.HasValue ? pageNumber.Value : 1;
             model.Paging.ItemsPerPage = itemsPerPage;
             model.Paging.TotalItems = model.Products.TotalItemCount;
+            model.Query = query; //TODO: sanitize
 
             return View(model);
 
