@@ -3,7 +3,7 @@ ASP.NET 5/MVC 6 TagHelper for Pagination
 
 This was implemented in support of a larger project [cloudscribe.Core.Web](https://github.com/joeaudette/cloudscribe/) but has been moved to a separate repository since it has no dependencies on other "cloudscribe" components and should be useful in any ASP.NET 5/MVC 6 project that needs pagination.
 
-Much/most of the credit for this project should go to [Martijn Boland](https://github.com/martijnboland), I borrowed ideas, logic, tests, and demo content from his [MVCPaging](https://github.com/martijnboland/MvcPaging) project.
+Much/most of the credit for this project should go to the [MvcPaging](https://github.com/martijnboland/MvcPaging) project. Some of the ideas, logic, tests, and demo content are borrowed from this project.
 
 In addition to the PagerTagHelper, this project also has an HtmlHelper for Alphabetic pagination that can be used to filter the paged content in conjunction with the numeric pager.
 
@@ -28,7 +28,7 @@ and in ConfigureServices you will need this:
 
     services.TryAddTransient<IBuildPaginationLinks, PaginationLinkBuilder>();
     
-Note that PaginationLinkBuilder is where the logic/strategy for condensing the pagination links exists. For example if there are 500 pages, obviously you do not want 500 links, so some links have to be left out while still making it possible to navigate to any page. The logic there came from Martijn Boland and works pretty well but if you wanted to use a different strategy you could implement and inject your own IBuildPaginationLinks.
+Note that PaginationLinkBuilder is where the logic/strategy for condensing the pagination links exists. For example if there are 500 pages, obviously you do not want 500 links, so some links have to be left out while still making it possible to navigate to any page. The logic there came from the MvcPaging project and works pretty well but if you wanted to use a different strategy you could implement and inject your own IBuildPaginationLinks.
 
 In your _ViewImports.cshtml file add:
 
