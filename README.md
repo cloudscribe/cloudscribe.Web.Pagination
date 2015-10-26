@@ -3,9 +3,9 @@ ASP.NET 5/MVC 6 TagHelper for Pagination
 
 This was implemented in support of a larger project [cloudscribe.Core.Web](https://github.com/joeaudette/cloudscribe/) but has been moved to a separate repository since it has no dependencies on other "cloudscribe" components and should be useful in any ASP.NET 5/MVC 6 project that needs pagination.
 
-Much of the credit for this project should go to [Martijn Boland](https://github.com/martijnboland), I borrowed ideas, logic, tests, and demo content from his [MVCPaging](https://github.com/martijnboland/MvcPaging) project.
+Much/most of the credit for this project should go to [Martijn Boland](https://github.com/martijnboland), I borrowed ideas, logic, tests, and demo content from his [MVCPaging](https://github.com/martijnboland/MvcPaging) project.
 
-In addition to the PagerTagHelper, this project also has an HtmlHelper for Alphabetic pagination that can be used to filter the paged content in conjuntion with the numeric pager.
+In addition to the PagerTagHelper, this project also has an HtmlHelper for Alphabetic pagination that can be used to filter the paged content in conjunction with the numeric pager.
 
 You can download/clone this repo and run the PagingDemo.Web project to see multiple demo pages using the pager in various configurations including ajax and ajax inside a bootstrap modal.
 
@@ -59,5 +59,24 @@ and then set it from your controller and pass it in to the taghelper like this w
               asp-route-pagesize="@Model.Paging.ItemsPerPage"></cs-pager>
   
 The above example passes in a PaginationSettings object which encapsulates the pagesize, pagenumber, totalitems etc. It also passes in 2 extra route parameters "query" and "pagesize".
+
+#### Additional Supported Attributes with their default values
+
+* cs-show-first-last - false
+* cs-first-page-text - <
+* cs-first-page-title - First Page
+* cs-last-page-text - >
+* cs-last-page-title - Last Page
+* cs-previous-page-text - «
+* cs-previous-page-title - Previous page
+* cs-next-page-text - »
+* cs-next-page-title - Next page
+* cs-pager-ul-class - pagination
+* cs-pager-li-current-class - active
+* cs-pager-li-non-active-class - disabled
+* cs-ajax-target - empty - should be the id of the html element to target for ajax updates
+* cs-ajax-mode - replace
+
+To use ajax, you must include jquery.unobtrusive-ajax.js in the page
 
 For more details you can study the PagingDemo.Web project in this repo. If you have questions or find bugs, please [post in the issues](https://github.com/joeaudette/cloudscribe.Web.Pagination/issues)
