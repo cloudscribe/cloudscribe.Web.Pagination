@@ -28,7 +28,7 @@ and in ConfigureServices you will need this:
 
     services.TryAddTransient<IBuildPaginationLinks, PaginationLinkBuilder>();
     
-Note that PaginationLinkBuilder is where the logic/strategy for condensing the paginationlinks exists. For example if there are 500 pages, obviously you do not want 500 links, so some links have to be left out while still making it possible to navigate to any page. The logic there came from Martijn Boland and works pretty well but if you wanted to use a different strategy you could implement and inject your own IBuildPaginationLinks.
+Note that PaginationLinkBuilder is where the logic/strategy for condensing the pagination links exists. For example if there are 500 pages, obviously you do not want 500 links, so some links have to be left out while still making it possible to navigate to any page. The logic there came from Martijn Boland and works pretty well but if you wanted to use a different strategy you could implement and inject your own IBuildPaginationLinks.
 
 In your _ViewImports.cshtml file add:
 
