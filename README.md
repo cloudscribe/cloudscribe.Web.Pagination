@@ -13,8 +13,8 @@ You can download/clone this repo and run the PagingDemo.Web project to see multi
 
 Prerequisites:
 
-*  [Visual Studio 2015 Download](https://www.visualstudio.com/en-us/downloads) 
-*  [ASP.NET 5 Beta8 Tooling Download](http://www.microsoft.com/en-us/download/details.aspx?id=49442) 
+*  [Visual Studio 2015](https://www.visualstudio.com/en-us/downloads) 
+*  [ASP.NET 5 Beta8 Tooling](http://www.microsoft.com/en-us/download/details.aspx?id=49442) 
 
 To install from nuget.org open the project.json file of your web application and in the dependencies section add:
 
