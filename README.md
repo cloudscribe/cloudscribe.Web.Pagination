@@ -11,10 +11,25 @@ You can download/clone this repo and run the PagingDemo.Web project to see multi
 
 ## Installation
 
+Prerequisites:
+
+*  [Visual Studio 2015 Download](https://www.visualstudio.com/en-us/downloads) 
+*  [ASP.NET 5 Beta8 Tooling Download](http://www.microsoft.com/en-us/download/details.aspx?id=49442) 
+
 To install from nuget.org open the project.json file of your web application and in the dependencies section add:
 
     "cloudscribe.Web.Pagination": "1.0.0-*"
     
+In your Startup.cs you will need this at the top: 
+
+    using cloudscribe.Web.Pagination;
+
+and in ConfigureServices you will need this:
+
+    services.TryAddTransient<IBuildPaginationLinks, PaginationLinkBuilder>();
+    
+Note that PaginationLinkBuilder is where the logic/strategy for condensing the paginationlinks exists. For example if there are 500 pages, obviously you do not want 500 links, so some links have to be left out while still making it possible to navigate to any page. The logic there came from Martijn Boland and works pretty well but if you wanted to use a different strategy you could implement and inject your own IBuildPaginationLinks.
+
 In your _ViewImports.cshtml file add:
 
     @addTagHelper "*, cloudscribe.Web.Pagination"
