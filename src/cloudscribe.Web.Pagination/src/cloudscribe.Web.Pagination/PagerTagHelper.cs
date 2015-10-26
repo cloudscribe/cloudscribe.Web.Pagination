@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2015-07-02
-// Last Modified:			2015-10-24
+// Last Modified:			2015-10-26
 // 
 
 using Microsoft.AspNet.Mvc.ViewFeatures;
@@ -24,6 +24,7 @@ namespace cloudscribe.Web.Pagination
         private const string PageSizeAttributeName = "cs-paging-pagesize";
         private const string PageNumberAttributeName = "cs-paging-pagenumber";
         private const string TotalItemsAttributeName = "cs-paging-totalitems";
+        private const string MaxPagerItemsAttributeName = "cs-paging-maxpageritems";
         private const string AjaxTargetAttributeName = "cs-ajax-target";
         private const string AjaxModeAttributeName = "cs-ajax-mode";
         private const string PageNumberParamAttributeName = "cs-pagenumber-param";
@@ -59,6 +60,9 @@ namespace cloudscribe.Web.Pagination
 
         [HtmlAttributeName(TotalItemsAttributeName)]
         public int TotalItems { get; set; } = 1;
+
+        [HtmlAttributeName(MaxPagerItemsAttributeName)]
+        public int MaxPagerItems { get; set; } = 10;
 
         [HtmlAttributeName(AjaxTargetAttributeName)]
         public string AjaxTarget { get; set; } = string.Empty;
@@ -168,6 +172,7 @@ namespace cloudscribe.Web.Pagination
                 PagingModel.CurrentPage = PageNumber;
                 PagingModel.ItemsPerPage = PageSize;
                 PagingModel.TotalItems = TotalItems;
+                PagingModel.MaxPagerItems = MaxPagerItems;
             }
             int totalPages = (int)Math.Ceiling(PagingModel.TotalItems / (double)PagingModel.ItemsPerPage);
             // don't render if only 1 page 
