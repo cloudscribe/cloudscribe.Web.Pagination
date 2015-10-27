@@ -3,7 +3,7 @@ ASP.NET 5/MVC 6 TagHelper for Pagination
 
 This was implemented in support of a larger project [cloudscribe.Core.Web](https://github.com/joeaudette/cloudscribe/) but has been moved to a separate repository since it has no dependencies on other "cloudscribe" components and should be useful in any ASP.NET 5/MVC 6 project that needs pagination.
 
-Much/most of the credit for this project should go to the [MvcPaging](https://github.com/martijnboland/MvcPaging) project. Some of the ideas, logic, tests, and demo content are borrowed from this project.
+Much/most of the credit for this project should go to the [MvcPaging](https://github.com/martijnboland/MvcPaging) project. Some of the ideas, logic, tests, and demo content are borrowed from that project.
 
 In addition to the PagerTagHelper, this project also has an HtmlHelper for Alphabetic pagination that can be used to filter the paged content in conjunction with the numeric pager.
 
@@ -60,8 +60,14 @@ and then set it from your controller and pass it in to the taghelper like this w
   
 The above example passes in a PaginationSettings object which encapsulates the pagesize, pagenumber, totalitems etc. It also passes in 2 extra route parameters "query" and "pagesize".
 
-#### Additional Supported Attributes with their default values
+#### Supported Attributes with their default values
 
+* cs-paging-info - null - you can pass in an instance of PaginationSettings rather than pass in separate properties for cs-paging-pagesize, cs-paging-pagenumber, cs-paging-totalitems, and cs-paging-maxpageritems
+* cs-paging-pagesize - 10
+* cs-paging-pagenumber - 1
+* cs-paging-totalitems - 1
+* cs-paging-maxpageritems - 10
+* cs-pagenumber-param - pageNumber
 * cs-show-first-last - false
 * cs-first-page-text - <
 * cs-first-page-title - First Page
