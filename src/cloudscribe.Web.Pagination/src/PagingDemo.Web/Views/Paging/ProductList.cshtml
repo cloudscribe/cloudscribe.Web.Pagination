@@ -14,14 +14,13 @@
     You can also manipulate the pageSize param in the url.</p>
 
 <div>
-    @Html.AlphabeticPager(Model.Query,
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-            null,
-            "All",
-            "",
-            false,
-            x => Url.Action("ProductList", new { query = x })
-    )
+    <cs-alphapager cs-alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                   cs-selected-letter="@Model.Query"
+                   cs-all-label="All"
+                   asp-controller="Paging"
+                   asp-action="ProductList" 
+                   cs-selected-letter-param="query"
+                   ></cs-alphapager>
 </div>
 
 <table class="table table-striped table-bordered">

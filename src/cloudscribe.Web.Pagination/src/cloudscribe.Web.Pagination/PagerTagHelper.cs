@@ -182,7 +182,7 @@ namespace cloudscribe.Web.Pagination
                 return;
             }
             
-            //change the bs-pager element into a ul
+            //change the cs-pager element into a ul
             output.TagName = "ul";
             
             string querySeparator;
