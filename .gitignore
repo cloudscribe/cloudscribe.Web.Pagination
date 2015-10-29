@@ -194,13 +194,10 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+
+src/PagingDemo.Web/wwwroot/lib*
+src/PagingDemo.Web/wwwroot/js/*
+src/PagingDemo.Web/wwwroot/css/site.min.css
+test/cloudscribe.Web.Pagination.Test/project.lock.json
 src/cloudscribe.Web.Pagination/project.lock.json
-
-
-
-src/cloudscribe.Web.Pagination/src/PagingDemo.Web/wwwroot/lib*
-src/cloudscribe.Web.Pagination/src/PagingDemo.Web/wwwroot/js/*
-src/cloudscribe.Web.Pagination/src/PagingDemo.Web/wwwroot/css/site.min.css
-src/cloudscribe.Web.Pagination/test/cloudscribe.Web.Pagination.Test/project.lock.json
-src/cloudscribe.Web.Pagination/src/cloudscribe.Web.Pagination/project.lock.json
-src/cloudscribe.Web.Pagination/src/PagingDemo.Web/project.lock.json
+src/PagingDemo.Web/project.lock.json
