@@ -87,7 +87,7 @@ The above example passes in a PaginationSettings object which encapsulates the p
 
 To use ajax, you must include jquery.unobtrusive-ajax.js in the page
 
-To use the AlphaPagerTagHelper you would addosmethinglike this in your view:
+To use the AlphaPagerTagHelper you would add smething like this in your view:
 
     <cs-alphapager cs-alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         cs-selected-letter="@Model.Query"
