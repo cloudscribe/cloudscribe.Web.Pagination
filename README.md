@@ -5,7 +5,7 @@ This was implemented in support of a larger project [cloudscribe.Core.Web](https
 
 Much/most of the credit for this project should go to the [MvcPaging](https://github.com/martijnboland/MvcPaging) project. Some of the ideas, logic, tests, and demo content are borrowed from that project.
 
-In addition to the PagerTagHelper, this project also has an HtmlHelper for Alphabetic pagination that can be used to filter the paged content in conjunction with the numeric pager.
+In addition to the PagerTagHelper, this project also has an AlphaPagerTagHelper for Alphabetic pagination that can be used to filter the paged content in conjunction with the numeric pager.
 
 You can download/clone this repo and run the PagingDemo.Web project to see multiple demo pages using the pager in various configurations including ajax and ajax inside a bootstrap modal.
 
@@ -62,7 +62,7 @@ and then set it from your controller and pass it in to the taghelper like this w
   
 The above example passes in a PaginationSettings object which encapsulates the pagesize, pagenumber, totalitems etc. It also passes in 2 extra route parameters "query" and "pagesize".
 
-#### Supported Attributes with their default values
+#### PagerTagHelper Supported Attributes with their default values
 
 * cs-paging-info - null - you can pass in an instance of PaginationSettings rather than pass in separate properties for cs-paging-pagesize, cs-paging-pagenumber, cs-paging-totalitems, and cs-paging-maxpageritems
 * cs-paging-pagesize - 10
@@ -86,5 +86,26 @@ The above example passes in a PaginationSettings object which encapsulates the p
 * cs-ajax-mode - replace
 
 To use ajax, you must include jquery.unobtrusive-ajax.js in the page
+
+To use the AlphaPagerTagHelper you would addosmethinglike this in your view:
+
+    <cs-alphapager cs-alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        cs-selected-letter="@Model.Query"
+        cs-all-label="All"
+        asp-controller="Paging"
+        asp-action="ProductList" 
+        cs-selected-letter-param="query"
+        ></cs-alphapager>
+
+#### AlphaPagerTagHelper Supported Attributes with their default values
+
+* cs-alphabet - ABCDEFGHIJKLMNOPQRSTUVWXYZ
+* cs-populated-letters - null - you can pass in an IEnumerable<string> indicating which letters actually have data so that ones without data can be non links. If not provided then every letter will be a link
+* cs-selected-letter - empty string
+* cs-selected-letter-param = "letter"
+* cs-all-label  - "All"
+* cs-all-value - empty string
+* cs-include-numbers - false
+* cs-alphapager-ul-class - "pagination alpha"
 
 For more details you can study the PagingDemo.Web project in this repo. If you have questions or find bugs, please [post in the issues](https://github.com/joeaudette/cloudscribe.Web.Pagination/issues)
