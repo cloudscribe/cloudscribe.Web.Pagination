@@ -66,6 +66,12 @@ namespace cloudscribe.Web.Pagination
         [HtmlAttributeName("cs-alphapager-ul-class")]
         public string UlCssClass { get; set; } = "pagination alpha";
 
+        [HtmlAttributeName("cs-pager-li-current-class")]
+        public string LiCurrentCssClass { get; set; } = "active";
+
+        [HtmlAttributeName("cs-pager-li-non-active-class")]
+        public string LiNonActiveCssClass { get; set; } = "inactive";
+
         /// <summary>
         /// The name of the action method.
         /// </summary>
@@ -165,7 +171,7 @@ namespace cloudscribe.Web.Pagination
                 {
                     if (SelectedLetter == letter || string.IsNullOrEmpty(SelectedLetter) && letter == "All")
                     {
-                        li.AddCssClass("active");
+                        li.AddCssClass(LiCurrentCssClass);
                         var span = new TagBuilder("span");
                         span.InnerHtml.Append(letter);
                         li.InnerHtml.Append(span);
@@ -199,7 +205,7 @@ namespace cloudscribe.Web.Pagination
                 }
                 else
                 {
-                    li.AddCssClass("inactive");
+                    li.AddCssClass(LiNonActiveCssClass);
                     var span = new TagBuilder("span");
                     span.InnerHtml.Append(letter);
                     li.InnerHtml.Append(span);
