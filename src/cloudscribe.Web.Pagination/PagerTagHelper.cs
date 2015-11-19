@@ -2,12 +2,12 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2015-07-02
-// Last Modified:			2015-10-26
+// Last Modified:			2015-11-19
 // 
 
 using Microsoft.AspNet.Mvc.ViewFeatures;
 using Microsoft.AspNet.Mvc.Rendering;
-using Microsoft.AspNet.Razor.Runtime.TagHelpers;
+using Microsoft.AspNet.Razor.TagHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -235,13 +235,13 @@ namespace cloudscribe.Web.Pagination
                 if (link.Text == "«")
                 {
                     //a.InnerHtml = "&laquo;";
-                    a.InnerHtml.AppendEncoded("&laquo;");
+                    a.InnerHtml.AppendHtml("&laquo;");
                     
                 }
                 else if (link.Text == "»")
                 {
                     //a.InnerHtml = "&raquo;";
-                    a.InnerHtml.AppendEncoded("&raquo;");
+                    a.InnerHtml.AppendHtml("&raquo;");
 
                 }
                 else
