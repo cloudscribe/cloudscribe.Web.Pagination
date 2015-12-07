@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2015-07-02
-// Last Modified:			2015-11-19
+// Last Modified:			2015-12-06
 // 
 
 using Microsoft.AspNet.Mvc.ViewFeatures;
@@ -189,7 +189,7 @@ namespace cloudscribe.Web.Pagination
 
             //prepare things needed by generatpageeurl function
             TagBuilder linkTemplate = GenerateLinkTemplate();
-            baseHref = linkTemplate.Attributes["href"];
+            baseHref = linkTemplate.Attributes["href"] ?? string.Empty;
             querySeparator = baseHref.Contains("?") ? "&" : "?";
             baseHref = baseHref + querySeparator + PageNumberParam + "=";
 
