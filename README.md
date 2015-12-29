@@ -1,6 +1,8 @@
 # cloudscribe.Web.Pagination
 ASP.NET 5/MVC 6 TagHelper for Pagination
 
+[![Join the chat at https://gitter.im/joeaudette/cloudscribe](https://badges.gitter.im/joeaudette/cloudscribe.svg)](https://gitter.im/joeaudette/cloudscribe?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This was implemented in support of a larger project [cloudscribe.Core.Web](https://github.com/joeaudette/cloudscribe/) but has been moved to a separate repository since it has no dependencies on other "cloudscribe" components and should be useful in any ASP.NET 5/MVC 6 project that needs pagination.
 
 Much/most of the credit for this project should go to the [MvcPaging](https://github.com/martijnboland/MvcPaging) project. Some of the ideas, logic, tests, and demo content are borrowed from that project.
