@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2015-07-02
-// Last Modified:			2015-12-06
+// Last Modified:			2016-02-02
 // 
 
 using Microsoft.AspNet.Mvc.ViewFeatures;
@@ -174,6 +174,12 @@ namespace cloudscribe.Web.Pagination
                 PagingModel.TotalItems = TotalItems;
                 PagingModel.MaxPagerItems = MaxPagerItems;
             }
+
+            if(ShowFirstLast)
+            {
+                PagingModel.ShowFirstLast = true;
+            }
+
             int totalPages = (int)Math.Ceiling(PagingModel.TotalItems / (double)PagingModel.ItemsPerPage);
             // don't render if only 1 page 
             if (totalPages <= 1) 

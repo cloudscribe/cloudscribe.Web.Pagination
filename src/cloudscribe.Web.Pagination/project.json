@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.0.0-beta5",
+  "version": "1.0.0-beta6",
   "title": "cloudscribe.Web.Pagination",
   "description": "an ASP.NET 5 TagHelper for pagination",
   "authors": [ "Joe Audette" ],
