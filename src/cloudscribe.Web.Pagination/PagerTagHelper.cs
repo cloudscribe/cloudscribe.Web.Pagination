@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2015-07-02
-// Last Modified:			2016-02-02
+// Last Modified:			2016-02-04
 // 
 
 using Microsoft.AspNet.Mvc.ViewFeatures;
@@ -228,7 +228,7 @@ namespace cloudscribe.Web.Pagination
 
                 var a = new TagBuilder("a");
 
-                if(link.Url.Length > 0)
+                if(link.Active && (link.Url.Length > 0))
                 {
                     a.MergeAttribute("href", link.Url);
                 }
