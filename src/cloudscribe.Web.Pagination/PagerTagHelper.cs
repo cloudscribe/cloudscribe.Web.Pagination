@@ -76,6 +76,18 @@ namespace cloudscribe.Web.Pagination
         [HtmlAttributeName("cs-show-first-last")]
         public bool ShowFirstLast { get; set; } = false;
 
+        [HtmlAttributeName("cs-show-numbered")]
+        public bool ShowNumbered { get; set; } = true;
+
+        [HtmlAttributeName("cs-use-reverse-increment")]
+        public bool UseReverseIncrement { get; set; } = false;
+
+        [HtmlAttributeName("cs-suppress-empty-nextprev")]
+        public bool SuppressEmptyNextPrev { get; set; } = false;
+
+       
+
+
         [HtmlAttributeName("cs-first-page-text")]
         public string FirstPageText { get; set; } = "<";
 
@@ -179,6 +191,22 @@ namespace cloudscribe.Web.Pagination
             {
                 PagingModel.ShowFirstLast = true;
             }
+
+            if(!ShowNumbered)
+            {
+                PagingModel.ShowNumbered = false;
+            }
+
+            if(UseReverseIncrement)
+            {
+                PagingModel.UseReverseIncrement = true;
+
+                if(SuppressEmptyNextPrev)
+                {
+                    PagingModel.SuppressEmptyNextPrev = true;
+                }
+            }
+
 
             int totalPages = (int)Math.Ceiling(PagingModel.TotalItems / (double)PagingModel.ItemsPerPage);
             // don't render if only 1 page 

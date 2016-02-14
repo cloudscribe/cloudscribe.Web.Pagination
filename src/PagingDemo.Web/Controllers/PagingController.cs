@@ -75,6 +75,32 @@ namespace PagingDemo.Web.Controllers
 
         }
 
+        public IActionResult BlogPagingDemo(
+            int? pageNumber,
+            string query = "")
+        {
+            int currentPageIndex = pageNumber.HasValue ? pageNumber.Value - 1 : 0;
+            int itemsPerPage = 1;
+
+            var model = new ProductListViewModel();
+
+            model.Products = allProducts.Where(p =>
+            p.Category.StartsWith(query)
+            )
+            .OrderByDescending(p => p.CreatedUtc)
+            .ToPagedList(currentPageIndex, itemsPerPage);
+
+            model.Paging.CurrentPage = pageNumber.HasValue ? pageNumber.Value : 1;
+            model.Paging.ItemsPerPage = itemsPerPage;
+            model.Paging.TotalItems = model.Products.TotalItemCount;
+            //model.Paging.ShowNumbered = false;
+            model.Query = query; //TODO: sanitize
+
+            return View(model);
+
+
+        }
+
         public IActionResult ViewByCategory(string categoryName, int? page)
         {
             categoryName = categoryName ?? this.allCategories[0];

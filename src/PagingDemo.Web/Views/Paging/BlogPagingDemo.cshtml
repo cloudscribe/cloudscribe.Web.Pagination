@@ -1,0 +1,56 @@
+﻿@using cloudscribe.Web.Pagination
+@using PagingDemo.Web.ViewModels
+@using PagingDemo.Web.Models
+
+@model ProductListViewModel
+@{
+    ViewBag.Title = "Browse all products with ViewModel";
+}
+<h2>@ViewBag.Title</h2>
+<p>
+    This demo uses alphabetic pager/filter in conjunction with a pager.
+    If you click a letter that matches the start of a product category it
+    will filter to matching items and the pager will preserve that filter while paging.
+    The only categories are Food, Electronics, and Shoes, so only F, E, or S will show any products.
+    You can also manipulate the pageSize param in the url.
+</p>
+
+<div>
+    <cs-alphapager cs-alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                   cs-selected-letter="@Model.Query"
+                   cs-all-label="All"
+                   asp-controller="Paging"
+                   asp-action="BlogPagingDemo"
+                   cs-selected-letter-param="query"></cs-alphapager>
+</div>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Product name</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Category</td>
+            </tr>}
+    </tbody>
+</table>
+<div>
+    <cs-pager cs-paging-info="@Model.Paging"
+              cs-pagenumber-param="pageNumber"
+              cs-paging-maxpageritems="0"
+              cs-show-first-last="false"
+              cs-show-numbered="false"
+              cs-use-reverse-increment="true"
+              cs-suppress-empty-nextprev="true"
+              cs-previous-page-text="< Older"
+              cs-next-page-text="Newer >"
+              asp-controller="Paging"
+              asp-action="BlogPagingDemo"
+              asp-route-query="@Model.Query"></cs-pager>
+</div>
