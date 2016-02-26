@@ -39,10 +39,12 @@ namespace cloudscribe.Web.Pagination
         private const string RouteValuesPrefix = "asp-route-";
 
        
-        public PagerTagHelper(IHtmlGenerator generator, IBuildPaginationLinks linkBuilder)
+        public PagerTagHelper(
+            IHtmlGenerator generator, 
+            IBuildPaginationLinks linkBuilder = null)
         {
             Generator = generator;
-            this.linkBuilder = linkBuilder;
+            this.linkBuilder = linkBuilder ?? new PaginationLinkBuilder();
         }
 
         private IBuildPaginationLinks linkBuilder;
@@ -85,8 +87,9 @@ namespace cloudscribe.Web.Pagination
         [HtmlAttributeName("cs-suppress-empty-nextprev")]
         public bool SuppressEmptyNextPrev { get; set; } = false;
 
-       
-
+        [HtmlAttributeName("cs-suppress-inactive-firstlast")]
+        public bool SuppressInActiveFirstLast { get; set; } = false;
+        
 
         [HtmlAttributeName("cs-first-page-text")]
         public string FirstPageText { get; set; } = "<";
@@ -185,6 +188,8 @@ namespace cloudscribe.Web.Pagination
                 PagingModel.ItemsPerPage = PageSize;
                 PagingModel.TotalItems = TotalItems;
                 PagingModel.MaxPagerItems = MaxPagerItems;
+                PagingModel.SuppressEmptyNextPrev = SuppressEmptyNextPrev;
+                PagingModel.SuppressInActiveFirstLast = SuppressInActiveFirstLast;
             }
 
             if(ShowFirstLast)

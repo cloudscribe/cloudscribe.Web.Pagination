@@ -54,10 +54,12 @@ namespace cloudscribe.Web.Pagination
             // First page
             if (paginationSettings.ShowFirstLast)
             {
+                var isActive = paginationSettings.CurrentPage > 1;
+                if(isActive || !paginationSettings.SuppressInActiveFirstLast)
                 paginationLinks.Add(
                     new PaginationLink
                     {
-                        Active = (paginationSettings.CurrentPage > 1 ? true : false),
+                        Active = isActive,
                         Text = firstPageText,
                         Title = firstPageTitle,
                         PageNumber = 1,
@@ -98,39 +100,38 @@ namespace cloudscribe.Web.Pagination
                     
                 }
 
-                //paginationLinks.Add(
-                //paginationSettings.CurrentPage < totalPages ? new PaginationLink
-                //{
-                //    Active = true,
-                //    PageNumber = paginationSettings.CurrentPage + 1,
-                //    Text = previousPageText,
-                //    Title = previousPageTitle,
-                //    Url = generateUrl(paginationSettings.CurrentPage + 1)
-                //}
-                //: new PaginationLink
-                //{
-                //    Active = false,
-                //    Text = previousPageText,
-                //    PageNumber = totalPages
-                //});
+               
             }
             else
             {
-                paginationLinks.Add(
-                paginationSettings.CurrentPage > 1 ? new PaginationLink
+                var isActive = paginationSettings.CurrentPage > 1;
+                if(isActive)
                 {
-                    Active = true,
-                    Text = previousPageText,
-                    Title = previousPageTitle,
-                    PageNumber = paginationSettings.CurrentPage - 1,
-                    Url = generateUrl(paginationSettings.CurrentPage - 1)
-                } : new PaginationLink
+                    paginationLinks.Add(new PaginationLink
+                    {
+                        Active = true,
+                        Text = previousPageText,
+                        Title = previousPageTitle,
+                        PageNumber = paginationSettings.CurrentPage - 1,
+                        Url = generateUrl(paginationSettings.CurrentPage - 1)
+                    });
+                }
+                else
                 {
-                    Active = false,
-                    Text = previousPageText,
-                    PageNumber = 1,
-                    Url = generateUrl(1)
-                });
+                    if(!paginationSettings.SuppressEmptyNextPrev)
+                    {
+                        paginationLinks.Add(new PaginationLink
+                        {
+                            Active = false,
+                            Text = previousPageText,
+                            PageNumber = 1,
+                            Url = generateUrl(1)
+                        });
+                    }
+                    
+                }
+
+                
             }
             
 
@@ -312,30 +313,43 @@ namespace cloudscribe.Web.Pagination
             }
             else
             {
-                paginationLinks.Add(
-                paginationSettings.CurrentPage < totalPages ? new PaginationLink
+                var isActive = paginationSettings.CurrentPage < totalPages;
+                if(isActive)
                 {
-                    Active = true,
-                    PageNumber = paginationSettings.CurrentPage + 1,
-                    Text = nextPageText,
-                    Title = nextPageTitle,
-                    Url = generateUrl(paginationSettings.CurrentPage + 1)
+                    paginationLinks.Add(new PaginationLink
+                    {
+                        Active = true,
+                        PageNumber = paginationSettings.CurrentPage + 1,
+                        Text = nextPageText,
+                        Title = nextPageTitle,
+                        Url = generateUrl(paginationSettings.CurrentPage + 1)
+                    });
                 }
-                : new PaginationLink
+                else
                 {
-                    Active = false,
-                    Text = nextPageText,
-                    PageNumber = totalPages
-                });
+                    if(!paginationSettings.SuppressEmptyNextPrev)
+                    {
+                        paginationLinks.Add(new PaginationLink
+                        {
+                            Active = false,
+                            Text = nextPageText,
+                            PageNumber = totalPages
+                        });
+                    }
+                    
+                }
+ 
             }
                 
 
             // Last page
             if (paginationSettings.ShowFirstLast)
             {
+                var isActive = paginationSettings.CurrentPage < totalPages;
+                if(isActive || !paginationSettings.SuppressInActiveFirstLast)
                 paginationLinks.Add(new PaginationLink
                 {
-                    Active = (paginationSettings.CurrentPage < totalPages ? true : false),
+                    Active = isActive,
                     Text = lastPageText,
                     Title = lastPageTitle,
                     PageNumber = totalPages,

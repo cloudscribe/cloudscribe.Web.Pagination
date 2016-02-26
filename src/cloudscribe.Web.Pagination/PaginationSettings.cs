@@ -26,6 +26,8 @@ namespace cloudscribe.Web.Pagination
 
         public bool SuppressEmptyNextPrev { get; set; } = false;
 
+        public bool SuppressInActiveFirstLast { get; set; } = false;
+
     }
 
 }
