@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2015-07-02
-// Last Modified:			2016-02-04
+// Last Modified:			2016-05-08
 // 
 
 using Microsoft.AspNet.Mvc.ViewFeatures;
@@ -27,6 +27,8 @@ namespace cloudscribe.Web.Pagination
         private const string MaxPagerItemsAttributeName = "cs-paging-maxpageritems";
         private const string AjaxTargetAttributeName = "cs-ajax-target";
         private const string AjaxModeAttributeName = "cs-ajax-mode";
+        private const string AjaxSuccessAttributeName = "cs-ajax-success";
+        private const string AjaxFailureAttributeName = "cs-ajax-failure";
         private const string PageNumberParamAttributeName = "cs-pagenumber-param";
 
         private const string ActionAttributeName = "asp-action";
@@ -71,6 +73,12 @@ namespace cloudscribe.Web.Pagination
 
         [HtmlAttributeName(AjaxModeAttributeName)]
         public string AjaxMode { get; set; } = "replace";
+
+        [HtmlAttributeName(AjaxSuccessAttributeName)]
+        public string AjaxSuccess { get; set; } = string.Empty;
+
+        [HtmlAttributeName(AjaxFailureAttributeName)]
+        public string AjaxFailure { get; set; } = string.Empty;
 
         [HtmlAttributeName(PageNumberParamAttributeName)]
         public string PageNumberParam { get; set; } = "pageNumber";
@@ -273,15 +281,12 @@ namespace cloudscribe.Web.Pagination
 
                 if (link.Text == "«")
                 {
-                    //a.InnerHtml = "&laquo;";
                     a.InnerHtml.AppendHtml("&laquo;");
                     
                 }
                 else if (link.Text == "»")
                 {
-                    //a.InnerHtml = "&raquo;";
                     a.InnerHtml.AppendHtml("&raquo;");
-
                 }
                 else
                 {
@@ -298,6 +303,14 @@ namespace cloudscribe.Web.Pagination
                     a.MergeAttribute("data-ajax", "true");
                     a.MergeAttribute("data-ajax-mode", AjaxMode);
                     a.MergeAttribute("data-ajax-update", AjaxTarget);
+                    if (AjaxSuccess.Length > 0)
+                    {
+                        a.MergeAttribute("data-ajax-success", AjaxSuccess);
+                    }
+                    if (AjaxFailure.Length > 0)
+                    {
+                        a.MergeAttribute("data-ajax-failure", AjaxFailure);
+                    }
                 }
                 
                 li.InnerHtml.Append(a);
