@@ -2,12 +2,12 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2015-07-02
-// Last Modified:			2016-05-08
+// Last Modified:			2016-05-16
 // 
 
-using Microsoft.AspNet.Mvc.ViewFeatures;
-using Microsoft.AspNet.Mvc.Rendering;
-using Microsoft.AspNet.Razor.TagHelpers;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +48,9 @@ namespace cloudscribe.Web.Pagination
             Generator = generator;
             this.linkBuilder = linkBuilder ?? new PaginationLinkBuilder();
         }
+
+        [ViewContext]
+        public ViewContext ViewContext { get; set; }
 
         private IBuildPaginationLinks linkBuilder;
 
@@ -313,9 +316,9 @@ namespace cloudscribe.Web.Pagination
                     }
                 }
                 
-                li.InnerHtml.Append(a);
+                li.InnerHtml.AppendHtml(a);
                 
-                output.Content.Append(li);
+                output.Content.AppendHtml(li);
             }
 
             output.Attributes.Clear();
@@ -346,14 +349,16 @@ namespace cloudscribe.Web.Pagination
             TagBuilder tagBuilder;
             if (Route == null)
             {
-                tagBuilder = Generator.GenerateActionLink(linkText: string.Empty,
-                                                          actionName: Action,
-                                                          controllerName: Controller,
-                                                          protocol: Protocol,
-                                                          hostname: Host,
-                                                          fragment: Fragment,
-                                                          routeValues: routeValues,
-                                                          htmlAttributes: null);
+                tagBuilder = Generator.GenerateActionLink(
+                    ViewContext,
+                    linkText: string.Empty,
+                    actionName: Action,
+                    controllerName: Controller,
+                    protocol: Protocol,
+                    hostname: Host,
+                    fragment: Fragment,
+                    routeValues: routeValues,
+                    htmlAttributes: null);
             }
             else if (Action != null || Controller != null)
             {
@@ -362,13 +367,15 @@ namespace cloudscribe.Web.Pagination
             }
             else
             {
-                tagBuilder = Generator.GenerateRouteLink(linkText: string.Empty,
-                                                         routeName: Route,
-                                                         protocol: Protocol,
-                                                         hostName: Host,
-                                                         fragment: Fragment,
-                                                         routeValues: routeValues,
-                                                         htmlAttributes: null);
+                tagBuilder = Generator.GenerateRouteLink(
+                    ViewContext,
+                    linkText: string.Empty,
+                    routeName: Route,
+                    protocol: Protocol,
+                    hostName: Host,
+                    fragment: Fragment,
+                    routeValues: routeValues,
+                    htmlAttributes: null);
             }
 
             return tagBuilder;

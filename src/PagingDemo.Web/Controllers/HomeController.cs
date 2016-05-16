@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 namespace PagingDemo.Web.Controllers
 {
@@ -13,7 +13,6 @@ namespace PagingDemo.Web.Controllers
             return View();
         }
 
-        
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
@@ -30,7 +29,7 @@ namespace PagingDemo.Web.Controllers
 
         public IActionResult Error()
         {
-            return View("~/Views/Shared/Error.cshtml");
+            return View();
         }
     }
 }

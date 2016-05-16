@@ -2,13 +2,13 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2015-10-29
-// Last Modified:			2015-11-19
+// Last Modified:			2016-05-16
 // 
 
-using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Mvc.Rendering;
-using Microsoft.AspNet.Mvc.ViewFeatures;
-using Microsoft.AspNet.Razor.TagHelpers;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,12 +28,13 @@ namespace cloudscribe.Web.Pagination
         private const string RouteValuesPrefix = "asp-route-";
 
         public AlphaPagerTagHelper(
-            IUrlHelper urlHelper,
             IHtmlGenerator generator)
         {
             Generator = generator;
-
         }
+
+        [ViewContext]
+        public ViewContext ViewContext { get; set; }
 
         protected IHtmlGenerator Generator { get; }
 
@@ -157,6 +158,7 @@ namespace cloudscribe.Web.Pagination
             string querySeparator;
 
             //prepare things needed by generatpageeurl function
+        
             TagBuilder linkTemplate = GenerateLinkTemplate();
             baseHref = linkTemplate.Attributes["href"];
             querySeparator = baseHref.Contains("?") ? "&" : "?";
@@ -174,7 +176,7 @@ namespace cloudscribe.Web.Pagination
                         li.AddCssClass(LiCurrentCssClass);
                         var span = new TagBuilder("span");
                         span.InnerHtml.Append(letter);
-                        li.InnerHtml.Append(span);
+                        li.InnerHtml.AppendHtml(span);
 
                     }
                     else
@@ -199,7 +201,7 @@ namespace cloudscribe.Web.Pagination
                         }
 
                         a.InnerHtml.Append(letter);
-                        li.InnerHtml.Append(a);
+                        li.InnerHtml.AppendHtml(a);
 
                     }
                 }
@@ -208,10 +210,10 @@ namespace cloudscribe.Web.Pagination
                     li.AddCssClass(LiNonActiveCssClass);
                     var span = new TagBuilder("span");
                     span.InnerHtml.Append(letter);
-                    li.InnerHtml.Append(span);
+                    li.InnerHtml.AppendHtml(span);
 
                 }
-                output.Content.Append(li);
+                output.Content.AppendHtml(li);
             }
 
 
@@ -240,14 +242,16 @@ namespace cloudscribe.Web.Pagination
             TagBuilder tagBuilder;
             if (Route == null)
             {
-                tagBuilder = Generator.GenerateActionLink(linkText: string.Empty,
-                                                          actionName: Action,
-                                                          controllerName: Controller,
-                                                          protocol: Protocol,
-                                                          hostname: Host,
-                                                          fragment: Fragment,
-                                                          routeValues: routeValues,
-                                                          htmlAttributes: null);
+                tagBuilder = Generator.GenerateActionLink(
+                    ViewContext,
+                    linkText: string.Empty,
+                    actionName: Action,
+                    controllerName: Controller,
+                    protocol: Protocol,
+                    hostname: Host,
+                    fragment: Fragment,
+                    routeValues: routeValues,
+                    htmlAttributes: null);
             }
             else if (Action != null || Controller != null)
             {
@@ -256,13 +260,15 @@ namespace cloudscribe.Web.Pagination
             }
             else
             {
-                tagBuilder = Generator.GenerateRouteLink(linkText: string.Empty,
-                                                         routeName: Route,
-                                                         protocol: Protocol,
-                                                         hostName: Host,
-                                                         fragment: Fragment,
-                                                         routeValues: routeValues,
-                                                         htmlAttributes: null);
+                tagBuilder = Generator.GenerateRouteLink(
+                    ViewContext,
+                    linkText: string.Empty,
+                    routeName: Route,
+                    protocol: Protocol,
+                    hostName: Host,
+                    fragment: Fragment,
+                    routeValues: routeValues,
+                    htmlAttributes: null);
             }
 
             return tagBuilder;
