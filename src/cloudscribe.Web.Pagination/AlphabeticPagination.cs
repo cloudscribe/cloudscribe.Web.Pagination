@@ -2,10 +2,11 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2014-12-10
-// Last Modified:			2015-10-29
+// Last Modified:			2016-05-16
 
-using Microsoft.AspNet.Html.Abstractions;
-using Microsoft.AspNet.Mvc.Rendering;
+
+using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,7 +70,7 @@ namespace cloudscribe.Web.Pagination
                         li.AddCssClass("active");
                         var span = new TagBuilder("span");
                         span.InnerHtml.Append(letter);
-                        li.InnerHtml.Append(span);
+                        li.InnerHtml.AppendHtml(span);
 
                     }
                     else
@@ -86,7 +87,7 @@ namespace cloudscribe.Web.Pagination
                         }
                         
                         a.InnerHtml.Append(letter);
-                        li.InnerHtml.Append(a);
+                        li.InnerHtml.AppendHtml(a);
                         
                     }
                 }
@@ -95,10 +96,10 @@ namespace cloudscribe.Web.Pagination
                     li.AddCssClass("inactive");
                     var span = new TagBuilder("span");
                     span.InnerHtml.Append(letter);
-                    li.InnerHtml.Append(span);
+                    li.InnerHtml.AppendHtml(span);
                     
                 }
-                ul.InnerHtml.Append(li);
+                ul.InnerHtml.AppendHtml(li);
             }
 
             return ul;

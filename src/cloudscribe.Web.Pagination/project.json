@@ -1,34 +1,28 @@
 ﻿{
-  "version": "1.0.1-beta3",
-  "title": "cloudscribe.Web.Pagination",
-  "description": "an ASP.NET 5 TagHelper for pagination",
-  "authors": [ "Joe Audette" ],
-  "owners": [ "Source Tree Solutions" ],
-  "tags": [ "cloudscribe","mvc6","pagination","navigation","bootstrap" ],
-  "projectUrl": "https://github.com/joeaudette/cloudscribe.Web.Pagination",
-  "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
-  "copyright": "2015 Source Tree Solutions",
-  "iconUrl": "https://raw.githubusercontent.com/joeaudette/cloudscribe.Web.Pagination/master/cloudscribe-icon-32.png",
-  "requireLicenseAcceptance": false,
-  "releaseNotes": "update to asp.net5 rc1",
+    "version": "1.0.1-beta4",
+    "description": "an AspNetCore TagHelper for pagination",
+    "authors": [ "Joe Audette" ],
+    "copyright": "2015 Source Tree Solutions",
+    "packOptions": {
+        "owners": [ "Source Tree Solutions" ],
+        "tags": [ "cloudscribe", "mvc", "pagination", "navigation", "bootstrap" ],
+        "iconUrl": "https://raw.githubusercontent.com/joeaudette/cloudscribe.Web.Pagination/master/cloudscribe-icon-32.png",
+        "requireLicenseAcceptance": false,
+        "releaseNotes": "update to asp.net5 rc1",
+        "projectUrl": "https://github.com/joeaudette/cloudscribe.Web.Pagination",
+        "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0"
+    },
 
-  "dependencies": {
-    "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
-    "Microsoft.AspNet.Mvc.TagHelpers": "6.0.0-rc1-final"
+    "dependencies": {
+        "NETStandard.Library": "1.5.0-rc2-24027",
+        "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
+        "Microsoft.AspNetCore.Mvc.TagHelpers": "1.0.0-rc2-final",
+        "System.Linq.Queryable": "4.0.1-rc2-24027"
+    },
 
-  },
-
-  "frameworks": {
-    "net451": { },
-    "dnxcore50": {
-      "dependencies": {
-        "Microsoft.CSharp": "4.0.1-beta-23516",
-        "System.Collections": "4.0.11-beta-23516",
-        "System.Linq": "4.0.1-beta-23516",
-        "System.Linq.Queryable": "4.0.1-beta-23516",
-        "System.Runtime": "4.0.21-beta-23516",
-        "System.Threading": "4.0.11-beta-23516"
-      }
+    "frameworks": {
+        "netstandard1.5": {
+            "imports": "dnxcore50"
+        }
     }
-  }
 }
