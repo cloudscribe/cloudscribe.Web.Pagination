@@ -1,19 +1,41 @@
 ﻿{
-  "version": "1.0.0-*",
-  "buildOptions": {
-    "emitEntryPoint": true
-  },
+    "version": "1.0.0-*",
 
-  "dependencies": {
-    "Microsoft.NETCore.App": {
-      "type": "platform",
-      "version": "1.0.0-rc2-3002702"
-    }
-  },
+  "commands": {
+        "test": "xunit.runner.dnx"
+    },
 
-  "frameworks": {
-    "netcoreapp1.0": {
-      "imports": "dnxcore50"
+    "testRunner": "xunit",
+
+    "dependencies": {
+        "cloudscribe.MetaWeblog": "1.0.0-*",
+        "xunit": "2.1.0-rc2-build3176",
+        "dotnet-test-xunit": {
+            "version": "1.0.0-rc2-*",
+            "target": "package"
+        },
+        "Microsoft.NETCore.Platforms": "1.0.1-rc2-*",
+        "cloudscribe.Web.Pagination": "1.0.1-*"
+
+    },
+
+    "frameworks": {
+        "netcoreapp1.0": {
+            "dependencies": {
+                "Microsoft.NETCore.App": {
+                    "version": "1.0.0-rc2-*",
+                    "type": "platform"
+                },
+                "Microsoft.CSharp": "4.0.1-rc2-*",
+                "System.Collections": "4.0.11-rc2-*",
+                "System.Linq": "4.1.0-rc2-*",
+                "System.Runtime": "4.1.0-rc2-*",
+                "System.Threading": "4.0.11-rc2-*"
+            },
+            "imports": [
+                "dnxcore50",
+                "portable-net451+win8"
+            ]
+        }
     }
-  }
 }
