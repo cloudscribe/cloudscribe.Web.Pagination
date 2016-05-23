@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2015-07-02
-// Last Modified:			2016-05-16
+// Last Modified:			2016-05-23
 // 
 
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -131,6 +131,9 @@ namespace cloudscribe.Web.Pagination
 
         [HtmlAttributeName("cs-pager-li-current-class")]
         public string LiCurrentCssClass { get; set; } = "active";
+
+        [HtmlAttributeName("cs-pager-li-other-class")]
+        public string LiOtherCssClass { get; set; } = "";
 
         [HtmlAttributeName("cs-pager-li-non-active-class")]
         public string LiNonActiveCssClass { get; set; } = "disabled";
@@ -264,11 +267,22 @@ namespace cloudscribe.Web.Pagination
                 {
                     li.AddCssClass(LiCurrentCssClass);
                 }
-
-                if (!link.Active)
+                else
                 {
-                    li.AddCssClass(LiNonActiveCssClass);
+                    if (!link.Active)
+                    {
+                        li.AddCssClass(LiNonActiveCssClass);
+                    }
+                    else
+                    {
+                        if(!string.IsNullOrWhiteSpace(LiOtherCssClass))
+                        {
+                            li.AddCssClass(LiOtherCssClass);
+                        }
+                    }
                 }
+
+                
 
                 var a = new TagBuilder("a");
 
