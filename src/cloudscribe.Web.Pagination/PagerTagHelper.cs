@@ -117,11 +117,17 @@ namespace cloudscribe.Web.Pagination
         [HtmlAttributeName("cs-previous-page-text")]
         public string PreviousPageText { get; set; } = "«";
 
+        [HtmlAttributeName("cs-previous-page-html")]
+        public string PreviousPageHtml { get; set; } = "";
+
         [HtmlAttributeName("cs-previous-page-title")]
         public string PreviousPageTitle { get; set; } = "Previous page";
 
         [HtmlAttributeName("cs-next-page-text")]
         public string NextPageText { get; set; } = "»";
+
+        [HtmlAttributeName("cs-next-page-html")]
+        public string NextPageHtml { get; set; } = "";
 
         [HtmlAttributeName("cs-next-page-title")]
         public string NextPageTitle { get; set; } = "Next page";
@@ -282,55 +288,66 @@ namespace cloudscribe.Web.Pagination
                     }
                 }
 
-                
-
-                var a = new TagBuilder("a");
-
-                if(link.Active && (link.Url.Length > 0))
+                if(link.Text == PreviousPageText && !string.IsNullOrWhiteSpace(PreviousPageHtml))
                 {
-                    a.MergeAttribute("href", link.Url);
+                    li.InnerHtml.AppendHtml(PreviousPageHtml);
+                }
+                else if(link.Text == NextPageText && !string.IsNullOrWhiteSpace(NextPageHtml))
+                {
+                    li.InnerHtml.AppendHtml(NextPageHtml);
                 }
                 else
                 {
-                    a.MergeAttribute("href", "#");
-                }
-                
+                    var a = new TagBuilder("a");
 
-                if (link.Text == "«")
-                {
-                    a.InnerHtml.AppendHtml("&laquo;");
-                    
-                }
-                else if (link.Text == "»")
-                {
-                    a.InnerHtml.AppendHtml("&raquo;");
-                }
-                else
-                {
-                    a.InnerHtml.Append(link.Text);
+                    if (link.Active && (link.Url.Length > 0))
+                    {
+                        a.MergeAttribute("href", link.Url);
+                    }
+                    else
+                    {
+                        a.MergeAttribute("href", "#");
+                    }
+
+
+                    if (link.Text == "«")
+                    {
+                        a.InnerHtml.AppendHtml("&laquo;");
+
+                    }
+                    else if (link.Text == "»")
+                    {
+                        a.InnerHtml.AppendHtml("&raquo;");
+                    }
+                    else
+                    {
+                        a.InnerHtml.Append(link.Text);
+                    }
+
+                    if (link.Title.Length > 0)
+                    {
+                        a.MergeAttribute("title", link.Title);
+                    }
+
+                    if (AjaxTarget.Length > 0)
+                    {
+                        a.MergeAttribute("data-ajax", "true");
+                        a.MergeAttribute("data-ajax-mode", AjaxMode);
+                        a.MergeAttribute("data-ajax-update", AjaxTarget);
+                        if (AjaxSuccess.Length > 0)
+                        {
+                            a.MergeAttribute("data-ajax-success", AjaxSuccess);
+                        }
+                        if (AjaxFailure.Length > 0)
+                        {
+                            a.MergeAttribute("data-ajax-failure", AjaxFailure);
+                        }
+                    }
+
+                    li.InnerHtml.AppendHtml(a);
                 }
 
-                if(link.Title.Length > 0)
-                {
-                    a.MergeAttribute("title", link.Title);
-                }
                 
-                if (AjaxTarget.Length > 0)
-                {
-                    a.MergeAttribute("data-ajax", "true");
-                    a.MergeAttribute("data-ajax-mode", AjaxMode);
-                    a.MergeAttribute("data-ajax-update", AjaxTarget);
-                    if (AjaxSuccess.Length > 0)
-                    {
-                        a.MergeAttribute("data-ajax-success", AjaxSuccess);
-                    }
-                    if (AjaxFailure.Length > 0)
-                    {
-                        a.MergeAttribute("data-ajax-failure", AjaxFailure);
-                    }
-                }
-                
-                li.InnerHtml.AppendHtml(a);
                 
                 output.Content.AppendHtml(li);
             }
