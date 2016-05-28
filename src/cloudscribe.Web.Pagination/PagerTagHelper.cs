@@ -329,20 +329,24 @@ namespace cloudscribe.Web.Pagination
                         a.MergeAttribute("title", link.Title);
                     }
 
-                    if (AjaxTarget.Length > 0)
+                    if(!link.IsCurrent && link.Active)
                     {
-                        a.MergeAttribute("data-ajax", "true");
-                        a.MergeAttribute("data-ajax-mode", AjaxMode);
-                        a.MergeAttribute("data-ajax-update", AjaxTarget);
-                        if (AjaxSuccess.Length > 0)
+                        if (AjaxTarget.Length > 0)
                         {
-                            a.MergeAttribute("data-ajax-success", AjaxSuccess);
-                        }
-                        if (AjaxFailure.Length > 0)
-                        {
-                            a.MergeAttribute("data-ajax-failure", AjaxFailure);
+                            a.MergeAttribute("data-ajax", "true");
+                            a.MergeAttribute("data-ajax-mode", AjaxMode);
+                            a.MergeAttribute("data-ajax-update", AjaxTarget);
+                            if (AjaxSuccess.Length > 0)
+                            {
+                                a.MergeAttribute("data-ajax-success", AjaxSuccess);
+                            }
+                            if (AjaxFailure.Length > 0)
+                            {
+                                a.MergeAttribute("data-ajax-failure", AjaxFailure);
+                            }
                         }
                     }
+                    
 
                     li.InnerHtml.AppendHtml(a);
                 }
