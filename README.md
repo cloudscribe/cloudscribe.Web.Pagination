@@ -24,11 +24,7 @@ To install from nuget.org open the project.json file of your web application and
     
 Visual Studio 2015 should restore the package automatically, you could also open a command prompt and use dnu restore in your project folder.
 
-In your Startup.cs you will need this at the top: 
-
-    using cloudscribe.Web.Pagination;
-
-and in ConfigureServices you will need this:
+In your Startup.cs you will need this in ConfigureServices:
 
     services.AddCloudscribePagination();
     
