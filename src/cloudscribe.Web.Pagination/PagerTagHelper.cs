@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2015-07-02
-// Last Modified:			2016-05-23
+// Last Modified:			2016-05-29
 // 
 
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -100,8 +100,10 @@ namespace cloudscribe.Web.Pagination
 
         [HtmlAttributeName("cs-suppress-inactive-firstlast")]
         public bool SuppressInActiveFirstLast { get; set; } = false;
-        
 
+        [HtmlAttributeName("cs-suppress-empty-pager")]
+        public bool SuppressEmptyPager { get; set; } = true;
+        
         [HtmlAttributeName("cs-first-page-text")]
         public string FirstPageText { get; set; } = "<";
 
@@ -235,7 +237,7 @@ namespace cloudscribe.Web.Pagination
 
             int totalPages = (int)Math.Ceiling(PagingModel.TotalItems / (double)PagingModel.ItemsPerPage);
             // don't render if only 1 page 
-            if (totalPages <= 1) 
+            if (SuppressEmptyPager && (totalPages <= 1))
             {
                 output.SuppressOutput();
                 return;

@@ -1,4 +1,8 @@
-﻿@model IPagedList<PagingDemo.Web.Models.Product>
+﻿@using cloudscribe.Web.Pagination
+@using PagingDemo.Web.ViewModels
+@using PagingDemo.Web.Models
+
+@model ProductListViewModel
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -7,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var product in Model)
+        @foreach (var product in Model.Products)
         {
             <tr>
                 <td>@product.Name</td>
@@ -16,12 +20,12 @@
     </tbody>
 </table>
 <div>
-    <cs-pager cs-paging-pagesize="@Model.PageSize"
-              cs-paging-pagenumber="@Model.PageNumber"
-              cs-paging-totalitems="@Model.TotalItemCount"
+    <cs-pager cs-paging-pagesize="@Model.Paging.ItemsPerPage"
+              cs-paging-pagenumber="@Model.Paging.CurrentPage"
+              cs-paging-totalitems="@Model.Paging.TotalItems"
               cs-pagenumber-param="page"
               cs-ajax-target="#gridcontainer"
               asp-controller="Paging"
               asp-action="AjaxPage"
-              asp-route-pagesize="@Model.PageSize"></cs-pager>
+              asp-route-pagesize="@Model.Paging.ItemsPerPage"></cs-pager>
 </div>
