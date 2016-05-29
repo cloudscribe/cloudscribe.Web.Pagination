@@ -16,11 +16,11 @@ You can download/clone this repo and run the PagingDemo.Web project to see multi
 Prerequisites:
 
 *  [Visual Studio 2015](https://www.visualstudio.com/en-us/downloads) 
-*  [ASP.NET 5 RC1 Tooling](https://get.asp.net/) 
+*  [ASP.NET Core RC2 and Tooling](http://dot.net/) 
 
 To install from nuget.org open the project.json file of your web application and in the dependencies section add:
 
-    "cloudscribe.Web.Pagination": "1.0.0-*"
+    "cloudscribe.Web.Pagination": "1.0.1-*"
     
 Visual Studio 2015 should restore the package automatically, you could also open a command prompt and use dnu restore in your project folder.
 
@@ -30,9 +30,9 @@ In your Startup.cs you will need this at the top:
 
 and in ConfigureServices you will need this:
 
-    services.TryAddTransient<IBuildPaginationLinks, PaginationLinkBuilder>();
+    services.AddCloudscribePagination();
     
-Note that [PaginationLinkBuilder](https://github.com/joeaudette/cloudscribe.Web.Pagination/blob/master/src/cloudscribe.Web.Pagination/src/cloudscribe.Web.Pagination/PaginationLinkBuilder.cs) is where the logic/strategy for condensing the pagination links exists. For example if there are 500 pages, obviously you do not want 500 links, so some links have to be left out while still making it possible to navigate to any page. The logic there came from the MvcPaging project and works pretty well but if you wanted to use a different strategy you could implement and inject your own IBuildPaginationLinks.
+Note that the default implementation of IBuildPaginationLinks, [PaginationLinkBuilder](https://github.com/joeaudette/cloudscribe.Web.Pagination/blob/master/src/cloudscribe.Web.Pagination/src/cloudscribe.Web.Pagination/PaginationLinkBuilder.cs) is where the logic/strategy for condensing the pagination links exists. For example if there are 500 pages, obviously you do not want 500 links, so some links have to be left out while still making it possible to navigate to any page. The logic there came from the MvcPaging project and works pretty well but if you wanted to use a different strategy you could implement and inject your own IBuildPaginationLinks.
 
 In your _ViewImports.cshtml file add:
 
