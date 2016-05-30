@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2015-07-02
-// Last Modified:			2016-05-29
+// Last Modified:			2016-05-30
 // 
 
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -299,40 +299,40 @@ namespace cloudscribe.Web.Pagination
                     li.InnerHtml.AppendHtml(NextPageHtml);
                 }
                 else
-                {
-                    var a = new TagBuilder("a");
-
-                    if (link.Active && (link.Url.Length > 0))
-                    {
-                        a.MergeAttribute("href", link.Url);
-                    }
-                    else
-                    {
-                        a.MergeAttribute("href", "#");
-                    }
-
-
-                    if (link.Text == "«")
-                    {
-                        a.InnerHtml.AppendHtml("&laquo;");
-
-                    }
-                    else if (link.Text == "»")
-                    {
-                        a.InnerHtml.AppendHtml("&raquo;");
-                    }
-                    else
-                    {
-                        a.InnerHtml.Append(link.Text);
-                    }
-
-                    if (link.Title.Length > 0)
-                    {
-                        a.MergeAttribute("title", link.Title);
-                    }
-
+                {  
                     if(!link.IsCurrent && link.Active)
                     {
+                        var a = new TagBuilder("a");
+
+                        if (link.Active && (link.Url.Length > 0))
+                        {
+                            a.MergeAttribute("href", link.Url);
+                        }
+                        else
+                        {
+                            a.MergeAttribute("href", "#");
+                        }
+
+
+                        if (link.Text == "«")
+                        {
+                            a.InnerHtml.AppendHtml("&laquo;");
+
+                        }
+                        else if (link.Text == "»")
+                        {
+                            a.InnerHtml.AppendHtml("&raquo;");
+                        }
+                        else
+                        {
+                            a.InnerHtml.Append(link.Text);
+                        }
+
+                        if (link.Title.Length > 0)
+                        {
+                            a.MergeAttribute("title", link.Title);
+                        }
+
                         if (AjaxTarget.Length > 0)
                         {
                             a.MergeAttribute("data-ajax", "true");
@@ -347,10 +347,31 @@ namespace cloudscribe.Web.Pagination
                                 a.MergeAttribute("data-ajax-failure", AjaxFailure);
                             }
                         }
+                        li.InnerHtml.AppendHtml(a);
+                    }
+                    else
+                    {
+                        // current or not active
+                        var span = new TagBuilder("span");
+                        if (link.Text == "«")
+                        {
+                            span.InnerHtml.AppendHtml("&laquo;");
+
+                        }
+                        else if (link.Text == "»")
+                        {
+                            span.InnerHtml.AppendHtml("&raquo;");
+                        }
+                        else
+                        {
+                            span.InnerHtml.Append(link.Text);
+                        }
+
+                        li.InnerHtml.AppendHtml(span);
                     }
                     
 
-                    li.InnerHtml.AppendHtml(a);
+                    
                 }
 
                 
