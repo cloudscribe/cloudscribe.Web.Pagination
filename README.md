@@ -82,6 +82,10 @@ The above example passes in a PaginationSettings object which encapsulates the p
 * cs-pager-li-non-active-class - disabled
 * cs-ajax-target - empty - should be the id of the html element to target for ajax updates
 * cs-ajax-mode - replace
+* cs-ajax-success - empty - a callback
+* cs-ajax-failure - empty - a callback
+* cs-ajax-loading - empty - the #id of an image ie animated gif to show while loading
+* cs-ajax-loading-duration - empty - corresponds to data-ajax-loading-duration
 
 To use ajax, you must include jquery.unobtrusive-ajax.js in the page
 

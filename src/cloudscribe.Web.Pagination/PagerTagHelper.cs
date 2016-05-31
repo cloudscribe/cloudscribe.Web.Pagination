@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2015-07-02
-// Last Modified:			2016-05-30
+// Last Modified:			2016-05-31
 // 
 
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -29,6 +29,8 @@ namespace cloudscribe.Web.Pagination
         private const string AjaxModeAttributeName = "cs-ajax-mode";
         private const string AjaxSuccessAttributeName = "cs-ajax-success";
         private const string AjaxFailureAttributeName = "cs-ajax-failure";
+        private const string AjaxLoadingAttributeName = "cs-ajax-loading";
+        private const string AjaxLoadingDurationAttributeName = "cs-ajax-loading-duration";
         private const string PageNumberParamAttributeName = "cs-pagenumber-param";
 
         private const string ActionAttributeName = "asp-action";
@@ -82,6 +84,12 @@ namespace cloudscribe.Web.Pagination
 
         [HtmlAttributeName(AjaxFailureAttributeName)]
         public string AjaxFailure { get; set; } = string.Empty;
+
+        [HtmlAttributeName(AjaxLoadingAttributeName)]
+        public string AjaxLoading { get; set; } = string.Empty;
+
+        [HtmlAttributeName(AjaxLoadingDurationAttributeName)]
+        public string AjaxLoadingDuration { get; set; } = string.Empty;
 
         [HtmlAttributeName(PageNumberParamAttributeName)]
         public string PageNumberParam { get; set; } = "pageNumber";
@@ -345,6 +353,14 @@ namespace cloudscribe.Web.Pagination
                             if (AjaxFailure.Length > 0)
                             {
                                 a.MergeAttribute("data-ajax-failure", AjaxFailure);
+                            }
+                            if (AjaxLoading.Length > 0)
+                            {
+                                a.MergeAttribute("data-ajax-loading", AjaxLoading);
+                            }
+                            if (AjaxLoadingDuration.Length > 0)
+                            {
+                                a.MergeAttribute("data-ajax-loading-duration", AjaxLoadingDuration);
                             }
                         }
                         li.InnerHtml.AppendHtml(a);
