@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2015-07-02
-// Last Modified:			2016-05-31
+// Last Modified:			2016-06-09
 // 
 
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -29,6 +29,8 @@ namespace cloudscribe.Web.Pagination
         private const string AjaxModeAttributeName = "cs-ajax-mode";
         private const string AjaxSuccessAttributeName = "cs-ajax-success";
         private const string AjaxFailureAttributeName = "cs-ajax-failure";
+        private const string AjaxBeginAttributeName = "cs-ajax-begin";
+        private const string AjaxCompleteAttributeName = "cs-ajax-complete";
         private const string AjaxLoadingAttributeName = "cs-ajax-loading";
         private const string AjaxLoadingDurationAttributeName = "cs-ajax-loading-duration";
         private const string PageNumberParamAttributeName = "cs-pagenumber-param";
@@ -84,6 +86,12 @@ namespace cloudscribe.Web.Pagination
 
         [HtmlAttributeName(AjaxFailureAttributeName)]
         public string AjaxFailure { get; set; } = string.Empty;
+
+        [HtmlAttributeName(AjaxBeginAttributeName)]
+        public string AjaxBegin { get; set; } = string.Empty;
+
+        [HtmlAttributeName(AjaxCompleteAttributeName)]
+        public string AjaxComplete { get; set; } = string.Empty;
 
         [HtmlAttributeName(AjaxLoadingAttributeName)]
         public string AjaxLoading { get; set; } = string.Empty;
@@ -353,6 +361,14 @@ namespace cloudscribe.Web.Pagination
                             if (AjaxFailure.Length > 0)
                             {
                                 a.MergeAttribute("data-ajax-failure", AjaxFailure);
+                            }
+                            if (AjaxBegin.Length > 0)
+                            {
+                                a.MergeAttribute("data-ajax-begin", AjaxBegin);
+                            }
+                            if (AjaxComplete.Length > 0)
+                            {
+                                a.MergeAttribute("data-ajax-complete", AjaxComplete);
                             }
                             if (AjaxLoading.Length > 0)
                             {
