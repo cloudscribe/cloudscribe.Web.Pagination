@@ -196,7 +196,6 @@ FakesAssemblies/
 *.opt
 
 src/PagingDemo.Web/wwwroot/lib*
-src/PagingDemo.Web/wwwroot/js/*
 src/PagingDemo.Web/wwwroot/css/site.min.css
 test/cloudscribe.Web.Pagination.Test/project.lock.json
 src/cloudscribe.Web.Pagination/project.lock.json
