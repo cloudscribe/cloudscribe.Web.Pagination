@@ -16,11 +16,11 @@ You can download/clone this repo and run the PagingDemo.Web project to see multi
 Prerequisites:
 
 *  [Visual Studio 2015](https://www.visualstudio.com/en-us/downloads) 
-*  [ASP.NET Core RC2 and Tooling](http://dot.net/) 
+*  [ASP.NET Core RTM and related tooling](http://dot.net/) 
 
 To install from nuget.org open the project.json file of your web application and in the dependencies section add:
 
-    "cloudscribe.Web.Pagination": "1.0.1-*"
+    "cloudscribe.Web.Pagination": "1.0.2-*"
     
 Visual Studio 2015 should restore the package automatically, you could also open a command prompt and use dnu restore in your project folder.
 
