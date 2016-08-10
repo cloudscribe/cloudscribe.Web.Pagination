@@ -63,6 +63,12 @@ namespace PagingDemo.Web
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                   name: "pagingdemo1",
+                   template: "pager/{page?}"
+                   , defaults: new { controller = "Paging", action = "Index" }
+                   );
+
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });

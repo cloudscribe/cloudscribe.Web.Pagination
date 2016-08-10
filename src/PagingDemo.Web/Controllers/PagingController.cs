@@ -42,7 +42,7 @@ namespace PagingDemo.Web.Controllers
             }
         }
 
-
+       // [Route("paging/{page?}")]
         public IActionResult Index(int? page)
         {
             
@@ -194,6 +194,7 @@ namespace PagingDemo.Web.Controllers
             return View("ProductsByCategories", model);
         }
 
+        
         public IActionResult IndexAjax()
         {
             
@@ -215,6 +216,7 @@ namespace PagingDemo.Web.Controllers
             return View(model);
         }
 
+        //[Route("paging/ajaxpage/{page?}")]
         public IActionResult AjaxPage(int? page)
         {
             ViewBag.Title = "Browse all products";

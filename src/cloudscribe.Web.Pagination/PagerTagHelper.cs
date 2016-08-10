@@ -2,17 +2,18 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2015-07-02
-// Last Modified:			2016-06-09
+// Last Modified:			2016-08-10
 // 
 
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
 
 namespace cloudscribe.Web.Pagination
 {
@@ -46,12 +47,19 @@ namespace cloudscribe.Web.Pagination
 
        
         public PagerTagHelper(
+            IUrlHelperFactory urlHelperFactory,
+            IActionContextAccessor actionContextAccesor,
             IHtmlGenerator generator, 
             IBuildPaginationLinks linkBuilder = null)
         {
             Generator = generator;
             this.linkBuilder = linkBuilder ?? new PaginationLinkBuilder();
+            this.urlHelperFactory = urlHelperFactory;
+            this.actionContextAccesor = actionContextAccesor;
         }
+
+        private IUrlHelperFactory urlHelperFactory;
+        private IActionContextAccessor actionContextAccesor;
 
         [ViewContext]
         public ViewContext ViewContext { get; set; }
@@ -214,6 +222,8 @@ namespace cloudscribe.Web.Pagination
 
 
         private string baseHref = string.Empty;
+
+        private IUrlHelper urlHelper = null;
         
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
@@ -262,16 +272,13 @@ namespace cloudscribe.Web.Pagination
             //change the cs-pager element into a ul
             output.TagName = "ul";
             
-            string querySeparator;
-
+            
             //prepare things needed by generatpageeurl function
-            TagBuilder linkTemplate = GenerateLinkTemplate();
-            baseHref = linkTemplate.Attributes["href"] ?? string.Empty;
-            querySeparator = baseHref.Contains("?") ? "&" : "?";
-            baseHref = baseHref + querySeparator + PageNumberParam + "=";
 
+            urlHelper = urlHelperFactory.GetUrlHelper(actionContextAccesor.ActionContext);
+            
             List<PaginationLink> links = linkBuilder.BuildPaginationLinks(
-                PagingModel, 
+                PagingModel,
                 GeneratePageUrl,
                 FirstPageText,
                 FirstPageTitle,
@@ -401,13 +408,9 @@ namespace cloudscribe.Web.Pagination
 
                         li.InnerHtml.AppendHtml(span);
                     }
-                    
-
-                    
+                             
                 }
-
-                
-                
+       
                 output.Content.AppendHtml(li);
             }
 
@@ -418,57 +421,27 @@ namespace cloudscribe.Web.Pagination
 
         private string GeneratePageUrl(int pageNumber)
         {
-            return baseHref + pageNumber.ToString();
-        }
-
-        
-
-        private TagBuilder GenerateLinkTemplate()
-        {
-            // here I'm just letting the framework generate an actionlink
-            // in order to resolve the link url from the routing info
-            // there may be a better way to do this
-            // if I could find the implementation for Generator.GenerateActionLink
-            // maybe I would get a better idea
-
             var routeValues = RouteValues.ToDictionary(
                     kvp => kvp.Key,
                     kvp => (object)kvp.Value,
                     StringComparer.OrdinalIgnoreCase);
 
-            TagBuilder tagBuilder;
-            if (Route == null)
+            if (!routeValues.ContainsKey(PageNumberParam))
             {
-                tagBuilder = Generator.GenerateActionLink(
-                    ViewContext,
-                    linkText: string.Empty,
-                    actionName: Action,
-                    controllerName: Controller,
-                    protocol: Protocol,
-                    hostname: Host,
-                    fragment: Fragment,
-                    routeValues: routeValues,
-                    htmlAttributes: null);
-            }
-            else if (Action != null || Controller != null)
-            {
-                // Route and Action or Controller were specified. Can't determine the href attribute.
-                throw new InvalidOperationException("not enough info to build pager links");
-            }
-            else
-            {
-                tagBuilder = Generator.GenerateRouteLink(
-                    ViewContext,
-                    linkText: string.Empty,
-                    routeName: Route,
-                    protocol: Protocol,
-                    hostName: Host,
-                    fragment: Fragment,
-                    routeValues: routeValues,
-                    htmlAttributes: null);
+                routeValues.Add(PageNumberParam, pageNumber);
             }
 
-            return tagBuilder;
+            if (Route != null)
+            {
+                return urlHelper.Link(Route, routeValues);
+            }
+            else if (Action != null && Controller != null)
+            {
+                return urlHelper.Action(Action, Controller, routeValues);
+                
+            }
+           
+            return pageNumber.ToString();
         }
 
 

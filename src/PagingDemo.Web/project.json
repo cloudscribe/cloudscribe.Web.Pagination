@@ -6,7 +6,7 @@
             "version": "1.0.0",
             "type": "platform"
         },
-        "cloudscribe.Web.Pagination": "1.0.2-*",
+        "cloudscribe.Web.Pagination": "1.0.3-*",
         "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
         "Microsoft.AspNetCore.Diagnostics": "1.0.0",
         "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.0.0",
