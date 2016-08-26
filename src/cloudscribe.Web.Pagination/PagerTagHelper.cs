@@ -49,10 +49,10 @@ namespace cloudscribe.Web.Pagination
         public PagerTagHelper(
             IUrlHelperFactory urlHelperFactory,
             IActionContextAccessor actionContextAccesor,
-            IHtmlGenerator generator, 
+            //IHtmlGenerator generator, 
             IBuildPaginationLinks linkBuilder = null)
         {
-            Generator = generator;
+            //Generator = generator;
             this.linkBuilder = linkBuilder ?? new PaginationLinkBuilder();
             this.urlHelperFactory = urlHelperFactory;
             this.actionContextAccesor = actionContextAccesor;
@@ -66,7 +66,7 @@ namespace cloudscribe.Web.Pagination
 
         private IBuildPaginationLinks linkBuilder;
 
-        protected IHtmlGenerator Generator { get; }
+        //protected IHtmlGenerator Generator { get; }
 
         [HtmlAttributeName(PagingInfoAttributeName)]
         public PaginationSettings PagingModel { get; set; } = null;
