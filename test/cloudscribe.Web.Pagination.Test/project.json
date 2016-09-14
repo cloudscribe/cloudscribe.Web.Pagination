@@ -15,7 +15,7 @@
             "target": "package"
         },
         "Microsoft.NETCore.Platforms": "1.0.1",
-        "cloudscribe.Web.Pagination": "1.0.2-*"
+        "cloudscribe.Web.Pagination": "1.0.*"
 
     },
 

@@ -1,5 +1,5 @@
 ﻿{
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "an AspNetCore TagHelper for pagination",
     "authors": [ "Joe Audette" ],
     "copyright": "2015 Source Tree Solutions",
@@ -14,9 +14,9 @@
     },
 
     "dependencies": {
-        "Microsoft.AspNetCore.Mvc": "1.0.0",
-        "Microsoft.AspNetCore.Mvc.Core": "1.0.0",
-        "Microsoft.AspNetCore.Mvc.TagHelpers": "1.0.0",
+        "Microsoft.AspNetCore.Mvc": "1.0.*",
+        "Microsoft.AspNetCore.Mvc.Core": "1.0.*",
+        "Microsoft.AspNetCore.Mvc.TagHelpers": "1.0.*",
         "NETStandard.Library": "1.6.0"
     },
 
