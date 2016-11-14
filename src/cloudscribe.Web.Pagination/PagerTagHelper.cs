@@ -44,8 +44,8 @@ namespace cloudscribe.Web.Pagination
         private const string RouteAttributeName = "asp-route";
         private const string RouteValuesDictionaryName = "asp-all-route-data";
         private const string RouteValuesPrefix = "asp-route-";
+        private const string BaseHrefAttributeName = "asp-basehref";
 
-       
         public PagerTagHelper(
             IUrlHelperFactory urlHelperFactory,
             IActionContextAccessor actionContextAccesor,
@@ -220,8 +220,14 @@ namespace cloudscribe.Web.Pagination
         { get; set; }
         = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
-
-        private string baseHref = string.Empty;
+        /// <summary>
+        /// An alternative to Controller/Action or Route
+        /// </summary>
+        /// <remarks>
+        /// <see cref="Route"/> and <see cref="Action"/> and <see cref="Controller"/> must be null to be effective
+        /// </remarks>
+        [HtmlAttributeName(BaseHrefAttributeName)]
+        public string BaseHref { get; set; }
 
         private IUrlHelper urlHelper = null;
         
@@ -438,12 +444,18 @@ namespace cloudscribe.Web.Pagination
             else if (Action != null && Controller != null)
             {
                 return urlHelper.Action(Action, Controller, routeValues);
-                
             }
-           
+            else if (BaseHref != null)
+            {
+                if (BaseHref.StartsWith("~/"))
+                {
+                    BaseHref = urlHelper.Content(BaseHref);
+                }
+
+                return $"{BaseHref}?{routeValues.Select(x => $"{x.Key}={x.Value}").Aggregate((current, next) => $"{current}&{next}")}";
+            }
+
             return pageNumber.ToString();
         }
-
-
     }
 }
