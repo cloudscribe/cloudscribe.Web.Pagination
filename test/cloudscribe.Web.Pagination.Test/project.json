@@ -8,14 +8,13 @@
     "testRunner": "xunit",
 
     "dependencies": {
-        "cloudscribe.MetaWeblog": "1.0.0-*",
         "xunit": "2.1.0",
         "dotnet-test-xunit": {
             "version": "2.2.0-preview2-build1029",
             "target": "package"
         },
-        "Microsoft.NETCore.Platforms": "1.0.1",
-        "cloudscribe.Web.Pagination": "1.0.*"
+        "Microsoft.NETCore.Platforms": "1.1.*",
+        "cloudscribe.Web.Pagination": "1.1.*"
 
     },
 
@@ -23,14 +22,14 @@
         "netcoreapp1.0": {
             "dependencies": {
                 "Microsoft.NETCore.App": {
-                    "version": "1.0.0",
+                    "version": "1.1.0",
                     "type": "platform"
                 },
-                "Microsoft.CSharp": "4.0.1",
-                "System.Collections": "4.0.11",
-                "System.Linq": "4.1.0",
-                "System.Runtime": "4.1.0",
-                "System.Threading": "4.0.11"
+                "Microsoft.CSharp": "4.3.0",
+                "System.Collections": "4.3.0",
+                "System.Linq": "4.3.0",
+                "System.Runtime": "4.3.0",
+                "System.Threading": "4.3.0"
             },
             "imports": [
                 "dnxcore50",
