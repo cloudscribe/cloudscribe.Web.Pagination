@@ -21,14 +21,16 @@
     "Microsoft.Extensions.Logging": "1.1.*",
     "Microsoft.Extensions.Logging.Console": "1.1.*",
     "Microsoft.Extensions.Logging.Debug": "1.1.*",
-    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.1.0",
-    "Microsoft.VisualStudio.Web.CodeGeneration.Tools": "1.1.0-preview4-final",
-    "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": "1.1.0-preview4-final",
-    "BundlerMinifier.Core": "2.2.306"
+    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.1.0"
+    
   },
 
   "tools": {
-    
+    "BundlerMinifier.Core": "2.2.306",
+    "Microsoft.Extensions.SecretManager.Tools": { "version": "1.1.0-preview4-final" },
+    "Microsoft.AspNetCore.Razor.Tools": { "version": "1.1.0-preview4-final" },
+    "Microsoft.AspNetCore.Server.IISIntegration.Tools": { "version": "1.1.0-preview4-final" },
+    "Microsoft.AspNetCore.Mvc.Razor.ViewCompilation.Tools": { "version": "1.1.0-preview4-final" }
   },
 
     "frameworks": {
