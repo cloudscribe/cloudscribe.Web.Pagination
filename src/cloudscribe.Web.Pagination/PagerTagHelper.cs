@@ -451,8 +451,10 @@ namespace cloudscribe.Web.Pagination
                 {
                     BaseHref = urlHelper.Content(BaseHref);
                 }
+                var start = "?";
+                if (BaseHref.Contains("?")) start = "&";
 
-                return $"{BaseHref}?{routeValues.Select(x => $"{x.Key}={x.Value}").Aggregate((current, next) => $"{current}&{next}")}";
+                return $"{BaseHref}{start}{routeValues.Select(x => $"{x.Key}={x.Value}").Aggregate((current, next) => $"{current}&{next}")}";
             }
 
             return pageNumber.ToString();
