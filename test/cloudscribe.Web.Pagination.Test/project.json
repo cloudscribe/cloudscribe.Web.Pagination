@@ -8,13 +8,14 @@
     "testRunner": "xunit",
 
     "dependencies": {
-        "xunit": "2.1.0",
+        "xunit": "2.2.0-beta4-build3444",
         "dotnet-test-xunit": {
             "version": "2.2.0-preview2-build1029",
             "target": "package"
         },
         "Microsoft.NETCore.Platforms": "1.1.*",
-        "cloudscribe.Web.Pagination": "1.1.*"
+        "cloudscribe.Web.Pagination": "1.1.*",
+		"Microsoft.DotNet.InternalAbstractions": "1.0.*"
 
     },
 
