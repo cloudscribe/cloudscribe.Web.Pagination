@@ -346,14 +346,19 @@ namespace cloudscribe.Web.Pagination
                         if (link.Text == "«")
                         {
                             a.InnerHtml.AppendHtml("&laquo;");
-
                         }
                         else if (link.Text == "»")
                         {
                             a.InnerHtml.AppendHtml("&raquo;");
                         }
-                        else
+                        else if (link.Text.Contains('<') && link.Text.Contains('>')) 
                         {
+                            //if text is an html formatted icon and contains a <tag>
+                            //ex. <span class='fa fa-chevron-right'></span>
+                            a.InnerHtml.AppendHtml(link.Text);
+                        }
+                        else {
+                            // if text should be html encoded
                             a.InnerHtml.Append(link.Text);
                         }
 
@@ -407,8 +412,14 @@ namespace cloudscribe.Web.Pagination
                         {
                             span.InnerHtml.AppendHtml("&raquo;");
                         }
-                        else
+                        else if (link.Text.Contains('<') && link.Text.Contains('>')) 
                         {
+                            //if text is an html formatted icon and contains a <tag>
+                            //ex. <span class='fa fa-chevron-right'></span>
+                            span.InnerHtml.AppendHtml(link.Text);
+                        }
+                        else {
+                            // if text should be html encoded
                             span.InnerHtml.Append(link.Text);
                         }
 
