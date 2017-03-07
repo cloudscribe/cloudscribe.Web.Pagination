@@ -1,22 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{84DF5591-19D1-4D4C-AC60-9D6571A1A90A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9625ACCE-865A-454C-888F-5D92D6A37112}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PagingDemo.Web", "src\PagingDemo.Web\PagingDemo.Web.xproj", "{54F97CF5-6282-4416-8549-49BA82F2C8DB}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "cloudscribe.Web.Pagination", "src\cloudscribe.Web.Pagination\cloudscribe.Web.Pagination.xproj", "{97882F42-7E4E-4B0C-8A6A-747D79C9F1DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{1921FBD2-2941-407D-ACE4-4B32DE5A30FA}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "cloudscribe.Web.Pagination.Test", "test\cloudscribe.Web.Pagination.Test\cloudscribe.Web.Pagination.Test.xproj", "{BDEAA273-B584-4C5D-A8C2-FC247A0108A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PagingDemo.Web", "src\PagingDemo.Web\PagingDemo.Web.csproj", "{54F97CF5-6282-4416-8549-49BA82F2C8DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Web.Pagination", "src\cloudscribe.Web.Pagination\cloudscribe.Web.Pagination.csproj", "{97882F42-7E4E-4B0C-8A6A-747D79C9F1DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Web.Pagination.Test", "test\cloudscribe.Web.Pagination.Test\cloudscribe.Web.Pagination.Test.csproj", "{BDEAA273-B584-4C5D-A8C2-FC247A0108A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

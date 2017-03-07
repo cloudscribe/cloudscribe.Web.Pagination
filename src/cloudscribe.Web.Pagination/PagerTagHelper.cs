@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2015-07-02
-// Last Modified:			2016-08-10
+// Last Modified:			2017-03-07
 // 
 
 using Microsoft.AspNetCore.Mvc;
@@ -170,6 +170,12 @@ namespace cloudscribe.Web.Pagination
         [HtmlAttributeName("cs-pager-li-non-active-class")]
         public string LiNonActiveCssClass { get; set; } = "disabled";
 
+        [HtmlAttributeName("cs-pager-link-current-class")]
+        public string LinkCurrentCssClass { get; set; } = "";
+
+        [HtmlAttributeName("cs-pager-link-other-class")]
+        public string LinkOtherCssClass { get; set; } = "";
+
         /// <summary>
         /// The name of the action method.
         /// </summary>
@@ -333,6 +339,11 @@ namespace cloudscribe.Web.Pagination
                     {
                         var a = new TagBuilder("a");
 
+                        if(!string.IsNullOrWhiteSpace(LinkOtherCssClass))
+                        {
+                            a.AddCssClass(LinkOtherCssClass);
+                        }
+
                         if (link.Active && (link.Url.Length > 0))
                         {
                             a.MergeAttribute("href", link.Url);
@@ -403,6 +414,12 @@ namespace cloudscribe.Web.Pagination
                     {
                         // current or not active
                         var span = new TagBuilder("span");
+
+                        if (!string.IsNullOrWhiteSpace(LinkCurrentCssClass))
+                        {
+                            span.AddCssClass(LinkCurrentCssClass);
+                        }
+
                         if (link.Text == "«")
                         {
                             span.InnerHtml.AppendHtml("&laquo;");
