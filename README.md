@@ -113,3 +113,9 @@ To use the AlphaPagerTagHelper you would add smething like this in your view:
 For more details you can study the PagingDemo.Web project in this repo. If you have questions or find bugs, please [post in the issues](https://github.com/joeaudette/cloudscribe.Web.Pagination/issues)
 
 Follow me on twitter @cloudscribeweb and @joeaudette
+
+### Build Status
+
+[![Build Status](https://travis-ci.org/joeaudette/cloudscribe.Web.Pagination.svg?branch=master)](https://travis-ci.org/joeaudette/cloudscribe.Web.Pagination)
+
+[![Build status](https://ci.appveyor.com/api/projects/status/oe5lyktmbo8ucdyi?svg=true)](https://ci.appveyor.com/project/joeaudette/cloudscribe-web-pagination)
