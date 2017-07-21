@@ -11,6 +11,12 @@ In addition to the PagerTagHelper, this project also has an AlphaPagerTagHelper 
 
 You can download/clone this repo and run the PagingDemo.Web project to see multiple demo pages using the pager in various configurations including ajax and ajax inside a bootstrap modal.
 
+### Build Status
+
+| Windows  | Linux/Mac |
+| ------------- | ------------- |
+| [![Build status](https://ci.appveyor.com/api/projects/status/oe5lyktmbo8ucdyi?svg=true)](https://ci.appveyor.com/project/joeaudette/cloudscribe-web-pagination)  | [![Build Status](https://travis-ci.org/joeaudette/cloudscribe.Web.Pagination.svg?branch=master)](https://travis-ci.org/joeaudette/cloudscribe.Web.Pagination)  |
+
 ## Installation
 
 Prerequisites:
@@ -114,8 +120,3 @@ For more details you can study the PagingDemo.Web project in this repo. If you h
 
 Follow me on twitter @cloudscribeweb and @joeaudette
 
-### Build Status
-
-[![Build Status](https://travis-ci.org/joeaudette/cloudscribe.Web.Pagination.svg?branch=master)](https://travis-ci.org/joeaudette/cloudscribe.Web.Pagination)
-
-[![Build status](https://ci.appveyor.com/api/projects/status/oe5lyktmbo8ucdyi?svg=true)](https://ci.appveyor.com/project/joeaudette/cloudscribe-web-pagination)
