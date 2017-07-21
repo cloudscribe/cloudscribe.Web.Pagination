@@ -22,7 +22,7 @@ You can download/clone this repo and run the PagingDemo.Web project to see multi
 Prerequisites:
 
 *  [Visual Studio 2017](https://www.visualstudio.com/en-us/downloads) 
-*  [ASP.NET Core RTM and related tooling](http://dot.net/) 
+*  [ASP.NET Core and related tooling](http://dot.net/) 
 
 To install from nuget.org open the project.json file of your web application and in the dependencies section add:
 
