@@ -2,12 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <PreserveCompilationContext>true</PreserveCompilationContext>
-    <AssemblyName>PagingDemo.Web</AssemblyName>
-    <PackageId>PagingDemo.Web</PackageId>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <UserSecretsId>aspnet-PagingDemo.Web-dd4ade04-aa17-411b-bb33-2277d7fea5e5</UserSecretsId>
     
-    <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
+    
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,29 +19,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.0.0-*" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.0.0-*" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="2.0.0-*" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.0.0-*" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.0-*" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.0.0-*" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.0.0-*" />
-    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.0-*" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.0.0-*" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0-*" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.0-*" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.0.0-*" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.0.0-*" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.*" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.*" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.*" PrivateAssets="All" />
   </ItemGroup>
 
-  <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
-    <Exec Command="bower install" />
-    <Exec Command="dotnet bundle" />
-  </Target>
-
   <ItemGroup>
-    <DotNetCliToolReference Include="BundlerMinifier.Core" Version="2.*" />
-
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.*" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.*" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.*" />
   </ItemGroup>
 
 </Project>
