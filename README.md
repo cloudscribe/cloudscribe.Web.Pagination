@@ -15,7 +15,7 @@ You can download/clone this repo and run the PagingDemo.Web project to see multi
 
 | Windows  | Linux/Mac |
 | ------------- | ------------- |
-| [![Build status](https://ci.appveyor.com/api/projects/status/oe5lyktmbo8ucdyi?svg=true)](https://ci.appveyor.com/project/joeaudette/cloudscribe-web-pagination)  | [![Build Status](https://travis-ci.org/joeaudette/cloudscribe.Web.Pagination.svg?branch=master)](https://travis-ci.org/joeaudette/cloudscribe.Web.Pagination)  |
+| [![Build status](https://ci.appveyor.com/api/projects/status/oe5lyktmbo8ucdyi/branch/master?svg=true)](https://ci.appveyor.com/project/joeaudette/cloudscribe-web-pagination/branch/master)  | [![Build Status](https://travis-ci.org/joeaudette/cloudscribe.Web.Pagination.svg?branch=master)](https://travis-ci.org/joeaudette/cloudscribe.Web.Pagination)  |
 
 ## Installation
 
