@@ -51,7 +51,7 @@ namespace PagingDemo.Web
             {
                 routes.MapRoute(
                    name: "pagingdemo1",
-                   template: "pager/{page:int?}"
+                   template: "pager/{p:int?}"
                    , defaults: new { controller = "Paging", action = "Index" }
                    );
 
