@@ -43,10 +43,10 @@ namespace PagingDemo.Web.Controllers
         }
 
        // [Route("paging/{page?}")]
-        public IActionResult Index(int? page)
+        public IActionResult Index(int p = 1)
         {
             
-            var currentPageNum = page.HasValue ? page.Value : 1;
+            var currentPageNum = p;
             var offset = (DefaultPageSize * currentPageNum) - DefaultPageSize;
             var model = new ProductListViewModel();
             model.Products = this.allProducts
