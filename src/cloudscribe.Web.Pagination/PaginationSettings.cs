@@ -7,15 +7,15 @@
 
 namespace cloudscribe.Web.Pagination
 {
-    
+
     public class PaginationSettings
     {
         public int TotalItems { get; set; } = 0;
-       
+
         public int ItemsPerPage { get; set; } = 10;
-        
+
         public int CurrentPage { get; set; } = 1;
-        
+
         public int MaxPagerItems { get; set; } = 10;
 
         public bool ShowFirstLast { get; set; } = false;

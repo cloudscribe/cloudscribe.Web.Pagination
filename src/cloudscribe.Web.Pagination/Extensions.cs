@@ -4,26 +4,14 @@
 // Created:					2015-10-12
 // Last Modified:			2015-10-25
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace cloudscribe.Web.Pagination
 {
     public static class Extensions
     {
-        public static IPagedList<T> ToPagedList<T>(this IQueryable<T> source, int pageIndex, int pageSize, int? totalCount = null)
-        {
-            return new PagedList<T>(source, pageIndex, pageSize, totalCount);
-        }
-
-        public static IPagedList<T> ToPagedList<T>(this IEnumerable<T> source, int pageIndex, int pageSize, int? totalCount = null)
-        {
-            return new PagedList<T>(source, pageIndex, pageSize, totalCount);
-        }
-
+        
 
         public static List<string> ToStringList(this char[] chars)
         {

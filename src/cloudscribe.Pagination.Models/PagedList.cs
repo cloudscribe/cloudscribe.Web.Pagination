@@ -1,5 +1,4 @@
-﻿
-// borrowed from
+﻿// borrowed from
 // https://github.com/martijnboland/MvcPaging/blob/master/src/MvcPaging/PagedList.cs
 // under MIT license
 
@@ -7,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace cloudscribe.Web.Pagination
+namespace cloudscribe.Pagination.Models
 {
     public class PagedList<T> : List<T>, IPagedList<T>
     {

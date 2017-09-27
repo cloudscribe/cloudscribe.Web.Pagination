@@ -1,15 +1,10 @@
-﻿
-// borrowed from
+﻿// borrowed from
 // https://github.com/martijnboland/MvcPaging/blob/master/src/MvcPaging/IPagedList.cs
 // under MIT license
 
-
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace cloudscribe.Web.Pagination
+namespace cloudscribe.Pagination.Models
 {
     public interface IPagedList
     {
@@ -29,5 +24,4 @@ namespace cloudscribe.Web.Pagination
     public interface IPagedList<out T> : IPagedList, IEnumerable<T>
     {
     }
-
 }
