@@ -50,6 +50,8 @@ In a view where you need paging you would add something like this:
               cs-paging-pagenumber="@Model.PageNumber"
               cs-paging-totalitems="@Model.TotalItemCount"
               cs-pagenumber-param="page"
+              cs-previous-page-html="<a href='#' title='Previous page'><i class='glyphicon glyphicon-backward'></i></a>"
+              cs-next-page-html="<a href='#' title='Next page'><i class='glyphicon glyphicon-forward'></i></a>"
               asp-controller="Paging"
               asp-action="Index"></cs-pager>
 
@@ -87,6 +89,8 @@ The above example passes in a PaginationSettings object which encapsulates the p
 * cs-previous-page-title - Previous page
 * cs-next-page-text - »
 * cs-next-page-title - Next page
+* cs-previous-page-html - pass in raw html as shown in the example above, you must provide the title and your html must have a link with href='#'
+* cs-next-page-html - same as above
 * cs-pager-ul-class - pagination
 * cs-pager-li-current-class - active
 * cs-pager-li-non-active-class - disabled
