@@ -211,13 +211,14 @@ namespace PagingDemo.Web.Controllers
 
             if (HttpContext.Request.IsAjaxRequest())
             {
+               
                 return PartialView("_PagingModal", model);
             }
             return View(model);
         }
 
         //[Route("paging/ajaxpage/{page?}")]
-        public IActionResult AjaxPage(int? page)
+        public async Task<IActionResult> AjaxPage(int? page)
         {
             ViewBag.Title = "Browse all products";
             
@@ -234,7 +235,10 @@ namespace PagingDemo.Web.Controllers
             model.Paging.CurrentPage = currentPageNum;
             model.Paging.ItemsPerPage = DefaultPageSize;
             model.Paging.TotalItems = allProducts.Count;
-            
+
+            // simulate delay to show the loadinng indicator
+            await Task.Delay(2000);//milliseconds
+
             return PartialView("_ProductGrid", model);
         }
 

@@ -327,11 +327,27 @@ namespace cloudscribe.Web.Pagination
 
                 if(link.Text == PreviousPageText && !string.IsNullOrWhiteSpace(PreviousPageHtml))
                 {
-                    li.InnerHtml.AppendHtml(PreviousPageHtml);
+                    if(string.IsNullOrEmpty(link.Url))
+                    {
+                        li.InnerHtml.AppendHtml(PreviousPageHtml);
+                    }
+                    else
+                    {
+                        li.InnerHtml.AppendHtml(PreviousPageHtml.Replace("#", link.Url));
+                    }
+                    
                 }
                 else if(link.Text == NextPageText && !string.IsNullOrWhiteSpace(NextPageHtml))
                 {
-                    li.InnerHtml.AppendHtml(NextPageHtml);
+                    if (string.IsNullOrEmpty(link.Url))
+                    {
+                        li.InnerHtml.AppendHtml(NextPageHtml);
+                    }
+                    else
+                    {
+                        li.InnerHtml.AppendHtml(NextPageHtml.Replace("#", link.Url));
+                    }
+                        
                 }
                 else
                 {  

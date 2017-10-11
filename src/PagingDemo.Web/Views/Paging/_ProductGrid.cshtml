@@ -25,6 +25,10 @@
               cs-paging-totalitems="@Model.Paging.TotalItems"
               cs-pagenumber-param="page"
               cs-ajax-target="#gridcontainer"
+              cs-ajax-loading="#loadingIndicator"
+              cs-ajax-loading-duration="10"
+              cs-ajax-success="PagerRequestSuccess"
+              cs-ajax-failure="PagerRequestFailure"
               asp-controller="Paging"
               asp-action="AjaxPage"
               asp-route-pagesize="@Model.Paging.ItemsPerPage"></cs-pager>

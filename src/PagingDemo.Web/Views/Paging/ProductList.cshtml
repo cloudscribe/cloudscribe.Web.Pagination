@@ -43,6 +43,8 @@
     <cs-pager cs-paging-info="@Model.Paging" 
               cs-pagenumber-param="pageNumber"
               asp-controller="Paging"
+              cs-previous-page-html="<a href='#' title='Previous page'><i class='glyphicon glyphicon-backward'></i></a>"
+              cs-next-page-html="<a href='#' title='Next page'><i class='glyphicon glyphicon-forward'></i></a>"
               asp-action="ProductList" 
               asp-route-query="@Model.Query"
               asp-route-pagesize="@Model.Paging.ItemsPerPage"></cs-pager>

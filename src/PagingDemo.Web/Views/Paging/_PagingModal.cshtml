@@ -19,6 +19,9 @@
             <div id="gridcontainer">
                 @{await Html.RenderPartialAsync("_ProductGrid", Model); }
             </div>
+            <div id="loadingIndicator" style="background-color:cadetblue; display:none">
+                <p>Loading...</p>
+            </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

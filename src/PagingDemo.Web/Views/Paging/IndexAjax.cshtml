@@ -10,8 +10,23 @@
 <div id="gridcontainer">
     @Html.Partial("_ProductGrid", Model)
 </div>
+<div id="loadingIndicator" style="background-color:cadetblue; display:none">
+    <p>Loading...</p>
+</div>
 
 @section Scripts {
+
+<script type="text/javascript">
+        
+        function PagerRequestSuccess(data) {
+            //console.log("This is the OnSuccessCallback: " + data);
+            console.log("This is the OnSuccessCallback");
+        }
+        function PagerRequestFailure(request, error) {
+            console.log("This is the OnFailure Callback:" + error);
+        }
+        
+</script>
 
     <environment names="Development">
         <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
