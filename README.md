@@ -21,7 +21,7 @@ Also feel free to ask questions in our gitter chat web page:
 
 ### Build Status
 
-| Windows  | Linux/Mac |
+| Windows  | Linux |
 | ------------- | ------------- |
 | [![Build status](https://ci.appveyor.com/api/projects/status/oe5lyktmbo8ucdyi/branch/master?svg=true)](https://ci.appveyor.com/project/joeaudette/cloudscribe-web-pagination/branch/master)  | [![Build Status](https://travis-ci.org/joeaudette/cloudscribe.Web.Pagination.svg?branch=master)](https://travis-ci.org/joeaudette/cloudscribe.Web.Pagination)  |
 
