@@ -73,6 +73,12 @@ namespace cloudscribe.Web.Pagination
         [HtmlAttributeName("cs-pager-li-non-active-class")]
         public string LiNonActiveCssClass { get; set; } = "inactive";
 
+        [HtmlAttributeName("cs-pager-link-current-class")]
+        public string LinkCurrentCssClass { get; set; } = "";
+
+        [HtmlAttributeName("cs-pager-link-other-class")]
+        public string LinkOtherCssClass { get; set; } = "";
+
         /// <summary>
         /// The name of the action method.
         /// </summary>
@@ -175,6 +181,10 @@ namespace cloudscribe.Web.Pagination
                     {
                         li.AddCssClass(LiCurrentCssClass);
                         var span = new TagBuilder("span");
+                        if(!string.IsNullOrWhiteSpace(LinkCurrentCssClass))
+                        {
+                            span.AddCssClass(LinkCurrentCssClass);
+                        }
                         span.InnerHtml.Append(letter);
                         li.InnerHtml.AppendHtml(span);
 
@@ -198,6 +208,11 @@ namespace cloudscribe.Web.Pagination
                         else
                         {
                             a.MergeAttribute("href", GeneratePageUrl(letter));
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(LinkOtherCssClass))
+                        {
+                            a.AddCssClass(LinkOtherCssClass);
                         }
 
                         a.InnerHtml.Append(letter);

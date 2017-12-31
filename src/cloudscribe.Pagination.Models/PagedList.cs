@@ -8,6 +8,7 @@ using System.Linq;
 
 namespace cloudscribe.Pagination.Models
 {
+    [Obsolete("this class is not supported and will be removed in a future release")]
     public class PagedList<T> : List<T>, IPagedList<T>
     {
         public PagedList(IEnumerable<T> source, int index, int pageSize, int? totalCount = null)
