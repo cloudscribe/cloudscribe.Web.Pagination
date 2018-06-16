@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2015-07-06
-// Last Modified:			2015-07-15
+// Last Modified:			2018-06-16
 //
 
 using System;
@@ -14,7 +14,7 @@ namespace cloudscribe.Web.Pagination
     {
         List<PaginationLink> BuildPaginationLinks(
             PaginationSettings paginationSettings,
-            Func<int, string> generateUrl,
+            Func<long, string> generateUrl,
             string firstPageText,
             string firstPageTitle,
             string previousPageText,

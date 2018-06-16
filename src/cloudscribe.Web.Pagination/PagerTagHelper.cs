@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2015-07-02
-// Last Modified:			2017-03-07
+// Last Modified:			2018-06-16
 // 
 
 using Microsoft.AspNetCore.Mvc;
@@ -75,13 +75,13 @@ namespace cloudscribe.Web.Pagination
         public int PageSize { get; set; } = 10;
 
         [HtmlAttributeName(PageNumberAttributeName)]
-        public int PageNumber { get; set; } = 1;
+        public long PageNumber { get; set; } = 1;
 
         [HtmlAttributeName(TotalItemsAttributeName)]
-        public int TotalItems { get; set; } = 1;
+        public long TotalItems { get; set; } = 1;
 
         [HtmlAttributeName(MaxPagerItemsAttributeName)]
-        public int MaxPagerItems { get; set; } = 10;
+        public long MaxPagerItems { get; set; } = 10;
 
         [HtmlAttributeName(AjaxTargetAttributeName)]
         public string AjaxTarget { get; set; } = string.Empty;
@@ -469,7 +469,7 @@ namespace cloudscribe.Web.Pagination
             
         }
 
-        private string GeneratePageUrl(int pageNumber)
+        private string GeneratePageUrl(long pageNumber)
         {
             var routeValues = RouteValues.ToDictionary(
                     kvp => kvp.Key,

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using cloudscribe.Web.Pagination;
+﻿using cloudscribe.Pagination.Models;
 using PagingDemo.Web.Models;
 
 namespace PagingDemo.Web.ViewModels
@@ -11,13 +7,13 @@ namespace PagingDemo.Web.ViewModels
     {
         public ProductListViewModel()
         {
-            Paging = new PaginationSettings();
+            Products = new PagedResult<Product>();
         }
 
         public string Query { get; set; } = string.Empty;
 
-        public List<Product> Products { get; set; } = null;
+        public PagedResult<Product> Products { get; set; } = null;
 
-        public PaginationSettings Paging { get; set; }
+        
     }
 }

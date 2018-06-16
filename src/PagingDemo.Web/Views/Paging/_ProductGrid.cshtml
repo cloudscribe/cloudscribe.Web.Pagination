@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var product in Model.Products)
+        @foreach (var product in Model.Products.Data)
         {
             <tr>
                 <td>@product.Name</td>
@@ -20,9 +20,9 @@
     </tbody>
 </table>
 <div>
-    <cs-pager cs-paging-pagesize="@Model.Paging.ItemsPerPage"
-              cs-paging-pagenumber="@Model.Paging.CurrentPage"
-              cs-paging-totalitems="@Model.Paging.TotalItems"
+    <cs-pager cs-paging-pagesize="@Model.Products.PageSize"
+              cs-paging-pagenumber="@Model.Products.PageNumber"
+              cs-paging-totalitems="@Model.Products.TotalItems"
               cs-pagenumber-param="page"
               cs-ajax-target="#gridcontainer"
               cs-ajax-loading="#loadingIndicator"
@@ -31,5 +31,5 @@
               cs-ajax-failure="PagerRequestFailure"
               asp-controller="Paging"
               asp-action="AjaxPage"
-              asp-route-pagesize="@Model.Paging.ItemsPerPage"></cs-pager>
+              asp-route-pagesize="@Model.Products.PageSize"></cs-pager>
 </div>

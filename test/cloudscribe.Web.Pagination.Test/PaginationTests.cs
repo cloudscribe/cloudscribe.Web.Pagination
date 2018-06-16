@@ -213,7 +213,7 @@ namespace cloudscribe.Web.Navigation.Test
 
         }
 
-        private string generateUrl(int pageNumber)
+        private string generateUrl(long pageNumber)
         {
             return string.Format("/test/{0}", pageNumber);
         }

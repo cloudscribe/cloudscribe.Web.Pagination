@@ -49,14 +49,14 @@ namespace PagingDemo.Web.Controllers
             var currentPageNum = p;
             var offset = (DefaultPageSize * currentPageNum) - DefaultPageSize;
             var model = new ProductListViewModel();
-            model.Products = this.allProducts
+            model.Products.Data = this.allProducts
                 .Skip(offset)
                 .Take(DefaultPageSize)
                 .ToList();
 
-            model.Paging.CurrentPage = currentPageNum;
-            model.Paging.ItemsPerPage = DefaultPageSize;
-            model.Paging.TotalItems = allProducts.Count;
+            model.Products.PageNumber = currentPageNum;
+            model.Products.PageSize = DefaultPageSize;
+            model.Products.TotalItems = allProducts.Count;
 
             
             return View(model);
@@ -78,14 +78,14 @@ namespace PagingDemo.Web.Controllers
                 p.Category.StartsWith(query)
                 );
 
-            model.Products = filtered
+            model.Products.Data = filtered
                 .Skip(offset)
                 .Take(itemsPerPage)
                 .ToList();
 
-            model.Paging.CurrentPage = currentPageNum;
-            model.Paging.ItemsPerPage = itemsPerPage;
-            model.Paging.TotalItems = filtered.ToList().Count;
+            model.Products.PageNumber = currentPageNum;
+            model.Products.PageSize = itemsPerPage;
+            model.Products.TotalItems = filtered.ToList().Count;
             model.Query = query; //TODO: sanitize
 
             return View(model);
@@ -110,14 +110,14 @@ namespace PagingDemo.Web.Controllers
             
             var model = new ProductListViewModel();
 
-            model.Products = filtered
+            model.Products.Data = filtered
             .Skip(offset)
             .Take(itemsPerPage)
             .ToList();
 
-            model.Paging.CurrentPage = currentPageNum;
-            model.Paging.ItemsPerPage = itemsPerPage;
-            model.Paging.TotalItems = filtered.Count;
+            model.Products.PageNumber = currentPageNum;
+            model.Products.PageSize = itemsPerPage;
+            model.Products.TotalItems = filtered.Count;
             //model.Paging.UseReverseIncrement = true;
             model.Query = query; //TODO: sanitize
 
@@ -138,14 +138,14 @@ namespace PagingDemo.Web.Controllers
 
             var model = new ProductListViewModel();
 
-            model.Products = filtered
+            model.Products.Data = filtered
                 .Skip(offset)
                 .Take(DefaultPageSize)
                 .ToList();
 
-            model.Paging.CurrentPage = currentPageNum;
-            model.Paging.ItemsPerPage = DefaultPageSize;
-            model.Paging.TotalItems = filtered.Count;
+            model.Products.PageNumber = currentPageNum;
+            model.Products.PageSize = DefaultPageSize;
+            model.Products.TotalItems = filtered.Count;
 
             ViewBag.CategoryName = new SelectList(this.allCategories, categoryName);
             ViewBag.CategoryDisplayName = categoryName;
@@ -179,18 +179,17 @@ namespace PagingDemo.Web.Controllers
                 model.Categories.Contains(p.Category)
                 ).ToList();
 
-            model.Products = filtered
+            model.Products.Data = filtered
                 .Skip(offset)
                 .Take(DefaultPageSize)
                 .ToList();
                 
             model.AvailableCategories = this.allCategories;
 
-            model.Paging.CurrentPage = currentPageNum;
-            model.Paging.ItemsPerPage = DefaultPageSize;
-            model.Paging.TotalItems = filtered.Count;
-            model.Paging.ShowFirstLast = true;
-
+            model.Products.PageNumber = currentPageNum;
+            model.Products.PageSize = DefaultPageSize;
+            model.Products.TotalItems = filtered.Count;
+           
             return View("ProductsByCategories", model);
         }
 
@@ -200,14 +199,14 @@ namespace PagingDemo.Web.Controllers
             
             var model = new ProductListViewModel();
 
-            model.Products = this.allProducts
+            model.Products.Data = this.allProducts
                 .Take(DefaultPageSize)
                 .ToList();
             
 
-            model.Paging.CurrentPage = 1;
-            model.Paging.ItemsPerPage = DefaultPageSize;
-            model.Paging.TotalItems = allProducts.Count;
+            model.Products.PageNumber = 1;
+            model.Products.PageSize = DefaultPageSize;
+            model.Products.TotalItems = allProducts.Count;
 
             if (HttpContext.Request.IsAjaxRequest())
             {
@@ -227,14 +226,14 @@ namespace PagingDemo.Web.Controllers
 
             var model = new ProductListViewModel();
 
-            model.Products = this.allProducts
+            model.Products.Data = this.allProducts
                 .Skip(offset)
                 .Take(DefaultPageSize)
                 .ToList();
 
-            model.Paging.CurrentPage = currentPageNum;
-            model.Paging.ItemsPerPage = DefaultPageSize;
-            model.Paging.TotalItems = allProducts.Count;
+            model.Products.PageNumber = currentPageNum;
+            model.Products.PageSize = DefaultPageSize;
+            model.Products.TotalItems = allProducts.Count;
 
             // simulate delay to show the loadinng indicator
             await Task.Delay(2000);//milliseconds

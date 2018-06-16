@@ -1,6 +1,6 @@
 ﻿// Author:					Martijn Boland/Joe Audette
 // Created:					2015-07-06
-// Last Modified:			2016-02-14
+// Last Modified:			2018-06-16
 //
 // borrowed most code for building the list of links from Martijn Boland
 // https://github.com/martijnboland/MvcPaging/blob/master/src/MvcPaging/Pager.cs MIT License
@@ -35,7 +35,7 @@ namespace cloudscribe.Web.Pagination
         /// <returns></returns>
         public List<PaginationLink> BuildPaginationLinks(
             PaginationSettings paginationSettings, 
-            Func<int, string> generateUrl,
+            Func<long, string> generateUrl,
             string firstPageText,
             string firstPageTitle,
             string previousPageText,
@@ -49,7 +49,7 @@ namespace cloudscribe.Web.Pagination
         {
             List<PaginationLink> paginationLinks = new List<PaginationLink>();
 
-            int totalPages = (int)Math.Ceiling(paginationSettings.TotalItems / (double)paginationSettings.ItemsPerPage);
+            long totalPages = (long)Math.Ceiling(paginationSettings.TotalItems / (double)paginationSettings.ItemsPerPage);
 
             // First page
             if (paginationSettings.ShowFirstLast)
@@ -138,13 +138,13 @@ namespace cloudscribe.Web.Pagination
 
             if (paginationSettings.ShowNumbered)
             {
-                var start = 1;
-                var end = totalPages;
-                var nrOfPagesToDisplay = paginationSettings.MaxPagerItems;
+                long start = 1;
+                long end = totalPages;
+                long nrOfPagesToDisplay = paginationSettings.MaxPagerItems;
 
                 if (totalPages > nrOfPagesToDisplay)
                 {
-                    var middle = (int)Math.Ceiling(nrOfPagesToDisplay / 2d) - 1;
+                    var middle = (long)Math.Ceiling(nrOfPagesToDisplay / 2d) - 1;
                     var below = (paginationSettings.CurrentPage - middle);
                     var above = (paginationSettings.CurrentPage + middle);
 
