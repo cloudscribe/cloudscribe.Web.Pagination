@@ -3,12 +3,10 @@
   <PropertyGroup>
     <Description>an AspNetCore TagHelper for pagination</Description>
     <Copyright>Source Tree Solutions</Copyright>
-    <VersionPrefix>2.1.3</VersionPrefix>
-    <AssemblyVersion>2.1.3</AssemblyVersion>
+    <VersionPrefix>2.1.4</VersionPrefix>
+    <AssemblyVersion>2.1.4</AssemblyVersion>
     <Authors>Joe Audette</Authors>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <AssemblyName>cloudscribe.Web.Pagination</AssemblyName>
-    <PackageId>cloudscribe.Web.Pagination</PackageId>
     <PackageTags>cloudscribe;mvc;pagination;navigation;bootstrap</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
     <PackageIconUrl>https://raw.githubusercontent.com/joeaudette/cloudscribe.Web.Pagination/master/cloudscribe-icon-32.png</PackageIconUrl>

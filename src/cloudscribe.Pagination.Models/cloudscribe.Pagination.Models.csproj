@@ -3,8 +3,8 @@
   <PropertyGroup>
     <Description>Pagination models</Description>
     <Copyright>Source Tree Solutions</Copyright>
-    <VersionPrefix>1.0.2</VersionPrefix>
-    <AssemblyVersion>1.0.2</AssemblyVersion>
+    <VersionPrefix>1.0.3</VersionPrefix>
+    <AssemblyVersion>1.0.3</AssemblyVersion>
     <Authors>Joe Audette</Authors>
     
     <TargetFramework>netstandard1.6</TargetFramework>
@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Linq.Queryable" Version="4.3.*" />
+    <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
   </ItemGroup>
 
 </Project>
