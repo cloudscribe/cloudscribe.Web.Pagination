@@ -273,7 +273,7 @@ namespace cloudscribe.Web.Pagination
             }
 
 
-            int totalPages = (int)Math.Ceiling(PagingModel.TotalItems / (double)PagingModel.ItemsPerPage);
+            long totalPages = (long)Math.Ceiling(PagingModel.TotalItems / (double)PagingModel.ItemsPerPage);
             // don't render if only 1 page 
             if (SuppressEmptyPager && (totalPages <= 1))
             {
