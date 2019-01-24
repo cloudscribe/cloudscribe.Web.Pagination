@@ -8,7 +8,7 @@
 }
 <h2>@ViewBag.Title</h2>
 <div id="gridcontainer">
-    @Html.Partial("_ProductGrid", Model)
+    <partial name="_ProductGrid" model="Model" />
 </div>
 <div id="loadingIndicator" style="background-color:cadetblue; display:none">
     <p>Loading...</p>
