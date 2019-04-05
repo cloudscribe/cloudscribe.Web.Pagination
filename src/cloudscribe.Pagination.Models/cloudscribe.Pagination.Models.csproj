@@ -3,8 +3,8 @@
   <PropertyGroup>
     <Description>Pagination models</Description>
     <Copyright>Source Tree Solutions</Copyright>
-    <VersionPrefix>1.0.4</VersionPrefix>
-    <AssemblyVersion>1.0.4</AssemblyVersion>
+    <VersionPrefix>1.0.5</VersionPrefix>
+    <AssemblyVersion>1.0.5</AssemblyVersion>
     <Authors>Joe Audette</Authors>
     
     <TargetFramework>netstandard1.6</TargetFramework>
@@ -13,7 +13,7 @@
     <PackageReleaseNotes></PackageReleaseNotes>
     <PackageIconUrl>https://raw.githubusercontent.com/joeaudette/cloudscribe.Web.Pagination/master/cloudscribe-icon-32.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/joeaudette/cloudscribe.Web.Pagination</PackageProjectUrl>
-    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/cloudscribe/cloudscribe.Web.Pagination.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>

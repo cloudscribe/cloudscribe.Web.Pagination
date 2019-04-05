@@ -3,15 +3,15 @@
   <PropertyGroup>
     <Description>an AspNetCore TagHelper for pagination</Description>
     <Copyright>Source Tree Solutions</Copyright>
-    <VersionPrefix>2.1.7</VersionPrefix>
-    <AssemblyVersion>2.1.7</AssemblyVersion>
+    <VersionPrefix>2.1.8</VersionPrefix>
+    <AssemblyVersion>2.1.8</AssemblyVersion>
     <Authors>Joe Audette</Authors>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageTags>cloudscribe;mvc;pagination;navigation;bootstrap</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
     <PackageIconUrl>https://raw.githubusercontent.com/joeaudette/cloudscribe.Web.Pagination/master/cloudscribe-icon-32.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/joeaudette/cloudscribe.Web.Pagination</PackageProjectUrl>
-    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/cloudscribe/cloudscribe.Web.Pagination.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     
