@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Author:					Joe Audette
 // Created:					2014-11-15
-// Last Modified:			2016-06-16
+// Last Modified:			2019-04-23
 //
 
 namespace cloudscribe.Web.Pagination
@@ -27,6 +27,8 @@ namespace cloudscribe.Web.Pagination
         public bool SuppressEmptyNextPrev { get; set; } = false;
 
         public bool SuppressInActiveFirstLast { get; set; } = false;
+
+        public bool RemoveNextPrevLinks { get; set; } = false;
 
     }
 

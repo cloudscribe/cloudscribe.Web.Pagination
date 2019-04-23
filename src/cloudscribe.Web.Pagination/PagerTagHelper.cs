@@ -122,6 +122,9 @@ namespace cloudscribe.Web.Pagination
         [HtmlAttributeName("cs-suppress-empty-nextprev")]
         public bool SuppressEmptyNextPrev { get; set; } = false;
 
+        [HtmlAttributeName("cs-remove-nextprev-links")]
+        public bool RemoveNextPrevLinks { get; set; } = false;
+
         [HtmlAttributeName("cs-suppress-inactive-firstlast")]
         public bool SuppressInActiveFirstLast { get; set; } = false;
 
@@ -250,6 +253,7 @@ namespace cloudscribe.Web.Pagination
                 PagingModel.MaxPagerItems = MaxPagerItems;
                 PagingModel.SuppressEmptyNextPrev = SuppressEmptyNextPrev;
                 PagingModel.SuppressInActiveFirstLast = SuppressInActiveFirstLast;
+                PagingModel.RemoveNextPrevLinks = RemoveNextPrevLinks;
             }
 
             if(ShowFirstLast)

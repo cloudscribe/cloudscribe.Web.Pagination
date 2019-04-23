@@ -68,71 +68,75 @@ namespace cloudscribe.Web.Pagination
             }
 
             // Previous page
-            if (paginationSettings.UseReverseIncrement)
+            if(!paginationSettings.RemoveNextPrevLinks)
             {
-                var isActive = paginationSettings.CurrentPage < totalPages;
+                if (paginationSettings.UseReverseIncrement)
+                {
+                    var isActive = paginationSettings.CurrentPage < totalPages;
 
-                //SuppressEmptyNextPrev
-                if(isActive)
-                {
-                    paginationLinks.Add(
-                        new PaginationLink
-                        {
-                            Active = true,
-                            PageNumber = paginationSettings.CurrentPage + 1,
-                            Text = previousPageText,
-                            Title = previousPageTitle,
-                            Url = generateUrl(paginationSettings.CurrentPage + 1)
-                        });
-                }
-                else
-                {
-                    if(!paginationSettings.SuppressEmptyNextPrev)
+                    //SuppressEmptyNextPrev
+                    if (isActive)
                     {
                         paginationLinks.Add(
-                        new PaginationLink
-                        {
-                            Active = false,
-                            Text = previousPageText,
-                            PageNumber = totalPages
-                        });
+                            new PaginationLink
+                            {
+                                Active = true,
+                                PageNumber = paginationSettings.CurrentPage + 1,
+                                Text = previousPageText,
+                                Title = previousPageTitle,
+                                Url = generateUrl(paginationSettings.CurrentPage + 1)
+                            });
                     }
-                    
-                }
-
-               
-            }
-            else
-            {
-                var isActive = paginationSettings.CurrentPage > 1;
-                if(isActive)
-                {
-                    paginationLinks.Add(new PaginationLink
+                    else
                     {
-                        Active = true,
-                        Text = previousPageText,
-                        Title = previousPageTitle,
-                        PageNumber = paginationSettings.CurrentPage - 1,
-                        Url = generateUrl(paginationSettings.CurrentPage - 1)
-                    });
+                        if (!paginationSettings.SuppressEmptyNextPrev)
+                        {
+                            paginationLinks.Add(
+                            new PaginationLink
+                            {
+                                Active = false,
+                                Text = previousPageText,
+                                PageNumber = totalPages
+                            });
+                        }
+
+                    }
+
+
                 }
                 else
                 {
-                    if(!paginationSettings.SuppressEmptyNextPrev)
+                    var isActive = paginationSettings.CurrentPage > 1;
+                    if (isActive)
                     {
                         paginationLinks.Add(new PaginationLink
                         {
-                            Active = false,
+                            Active = true,
                             Text = previousPageText,
-                            PageNumber = 1,
-                            Url = generateUrl(1)
+                            Title = previousPageTitle,
+                            PageNumber = paginationSettings.CurrentPage - 1,
+                            Url = generateUrl(paginationSettings.CurrentPage - 1)
                         });
                     }
-                    
-                }
+                    else
+                    {
+                        if (!paginationSettings.SuppressEmptyNextPrev)
+                        {
+                            paginationLinks.Add(new PaginationLink
+                            {
+                                Active = false,
+                                Text = previousPageText,
+                                PageNumber = 1,
+                                Url = generateUrl(1)
+                            });
+                        }
 
-                
+                    }
+
+
+                }
             }
+            
             
 
 
@@ -258,88 +262,92 @@ namespace cloudscribe.Web.Pagination
 
             }
 
-
-
-            // Next page
-            if (paginationSettings.UseReverseIncrement)
+            if(!paginationSettings.RemoveNextPrevLinks)
             {
-
-
-                //SuppressEmptyNextPrev
-                var isActive = paginationSettings.CurrentPage > 1;
-
-                if(isActive)
+                // Next page
+                if (paginationSettings.UseReverseIncrement)
                 {
-                    paginationLinks.Add(
-                        new PaginationLink
-                        {
-                            Active = true,
-                            Text = nextPageText,
-                            Title = nextPageTitle,
-                            PageNumber = paginationSettings.CurrentPage - 1,
-                            Url = generateUrl(paginationSettings.CurrentPage - 1)
-                        });
-                }
-                else
-                {
-                    if(!paginationSettings.SuppressEmptyNextPrev)
+
+
+                    //SuppressEmptyNextPrev
+                    var isActive = paginationSettings.CurrentPage > 1;
+
+                    if (isActive)
                     {
                         paginationLinks.Add(
                             new PaginationLink
                             {
-                                Active = false,
+                                Active = true,
                                 Text = nextPageText,
-                                PageNumber = 1,
-                                Url = generateUrl(1)
+                                Title = nextPageTitle,
+                                PageNumber = paginationSettings.CurrentPage - 1,
+                                Url = generateUrl(paginationSettings.CurrentPage - 1)
                             });
                     }
-                }
-
-                //paginationLinks.Add(
-                // paginationSettings.CurrentPage > 1 ? new PaginationLink
-                // {
-                //     Active = true,
-                //     Text = nextPageText,
-                //     Title = nextPageTitle,
-                //     PageNumber = paginationSettings.CurrentPage + 1,
-                //     Url = generateUrl(paginationSettings.CurrentPage + 1)
-                // } : new PaginationLink
-                // {
-                //     Active = false,
-                //     Text = nextPageText,
-                //     PageNumber = 1,
-                //     Url = generateUrl(1)
-                // });
-            }
-            else
-            {
-                var isActive = paginationSettings.CurrentPage < totalPages;
-                if(isActive)
-                {
-                    paginationLinks.Add(new PaginationLink
+                    else
                     {
-                        Active = true,
-                        PageNumber = paginationSettings.CurrentPage + 1,
-                        Text = nextPageText,
-                        Title = nextPageTitle,
-                        Url = generateUrl(paginationSettings.CurrentPage + 1)
-                    });
+                        if (!paginationSettings.SuppressEmptyNextPrev)
+                        {
+                            paginationLinks.Add(
+                                new PaginationLink
+                                {
+                                    Active = false,
+                                    Text = nextPageText,
+                                    PageNumber = 1,
+                                    Url = generateUrl(1)
+                                });
+                        }
+                    }
+
+                    //paginationLinks.Add(
+                    // paginationSettings.CurrentPage > 1 ? new PaginationLink
+                    // {
+                    //     Active = true,
+                    //     Text = nextPageText,
+                    //     Title = nextPageTitle,
+                    //     PageNumber = paginationSettings.CurrentPage + 1,
+                    //     Url = generateUrl(paginationSettings.CurrentPage + 1)
+                    // } : new PaginationLink
+                    // {
+                    //     Active = false,
+                    //     Text = nextPageText,
+                    //     PageNumber = 1,
+                    //     Url = generateUrl(1)
+                    // });
                 }
                 else
                 {
-                    if(!paginationSettings.SuppressEmptyNextPrev)
+                    var isActive = paginationSettings.CurrentPage < totalPages;
+                    if (isActive)
                     {
                         paginationLinks.Add(new PaginationLink
                         {
-                            Active = false,
+                            Active = true,
+                            PageNumber = paginationSettings.CurrentPage + 1,
                             Text = nextPageText,
-                            PageNumber = totalPages
+                            Title = nextPageTitle,
+                            Url = generateUrl(paginationSettings.CurrentPage + 1)
                         });
                     }
-                    
+                    else
+                    {
+                        if (!paginationSettings.SuppressEmptyNextPrev)
+                        {
+                            paginationLinks.Add(new PaginationLink
+                            {
+                                Active = false,
+                                Text = nextPageText,
+                                PageNumber = totalPages
+                            });
+                        }
+
+                    }
+
                 }
- 
+
             }
+
+            
                 
 
             // Last page
