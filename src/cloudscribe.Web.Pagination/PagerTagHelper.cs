@@ -238,6 +238,11 @@ namespace cloudscribe.Web.Pagination
         [HtmlAttributeName(BaseHrefAttributeName)]
         public string BaseHref { get; set; }
 
+        //https://github.com/cloudscribe/cloudscribe.Web.Pagination/issues/47
+
+        [HtmlAttributeName("cs-preserve-ambient-querystring")]
+        public bool PreserveAmbientQueryString { get; set; } = true;
+
         private IUrlHelper urlHelper = null;
         
         public override void Process(TagHelperContext context, TagHelperOutput output)
@@ -485,6 +490,12 @@ namespace cloudscribe.Web.Pagination
                 routeValues.Add(PageNumberParam, pageNumber);
             }
 
+            if(PreserveAmbientQueryString)
+            {
+                AddCurrentQueryString(routeValues);
+            }
+            
+
             if (Route != null)
             {
                 return urlHelper.Link(Route, routeValues);
@@ -507,5 +518,21 @@ namespace cloudscribe.Web.Pagination
 
             return pageNumber.ToString();
         }
+
+        /// <summary>
+        /// add Current Query item to routeValues
+        /// </summary>
+        /// <param name="current">current routeValues</param>
+        private void AddCurrentQueryString(Dictionary<string, object> current)
+        {
+            foreach (var item in urlHelper.ActionContext.HttpContext.Request.Query)
+            {
+                if (!current.ContainsKey(item.Key))
+                {
+                    current.Add(item.Key, item.Value);
+                }
+            }
+        }
+
     }
 }
