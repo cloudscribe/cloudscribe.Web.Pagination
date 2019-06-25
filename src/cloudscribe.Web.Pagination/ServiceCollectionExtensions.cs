@@ -9,7 +9,7 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IServiceCollection AddCloudscribePagination(this IServiceCollection services)
         {
-            services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
+            //services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.TryAddTransient<IBuildPaginationLinks, PaginationLinkBuilder>();
 
             return services;

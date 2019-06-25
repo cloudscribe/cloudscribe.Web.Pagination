@@ -11,9 +11,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using Microsoft.Extensions.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace cloudscribe.Web.Pagination
 {
@@ -48,25 +50,18 @@ namespace cloudscribe.Web.Pagination
 
         public PagerTagHelper(
             IUrlHelperFactory urlHelperFactory,
-            IActionContextAccessor actionContextAccesor,
-            //IHtmlGenerator generator, 
             IBuildPaginationLinks linkBuilder = null)
         {
-            //Generator = generator;
             this.linkBuilder = linkBuilder ?? new PaginationLinkBuilder();
             this.urlHelperFactory = urlHelperFactory;
-            this.actionContextAccesor = actionContextAccesor;
         }
 
         private IUrlHelperFactory urlHelperFactory;
-        private IActionContextAccessor actionContextAccesor;
 
         [ViewContext]
         public ViewContext ViewContext { get; set; }
 
         private IBuildPaginationLinks linkBuilder;
-
-        //protected IHtmlGenerator Generator { get; }
 
         [HtmlAttributeName(PagingInfoAttributeName)]
         public PaginationSettings PagingModel { get; set; } = null;
@@ -296,7 +291,7 @@ namespace cloudscribe.Web.Pagination
             
             //prepare things needed by generatpageeurl function
 
-            urlHelper = urlHelperFactory.GetUrlHelper(actionContextAccesor.ActionContext);
+            urlHelper = urlHelperFactory.GetUrlHelper(ViewContext);
             
             List<PaginationLink> links = linkBuilder.BuildPaginationLinks(
                 PagingModel,
@@ -490,19 +485,16 @@ namespace cloudscribe.Web.Pagination
                 routeValues.Add(PageNumberParam, pageNumber);
             }
 
-            if(PreserveAmbientQueryString)
+            IEnumerable<KeyValuePair<string, StringValues>> blockedQuery= Enumerable.Empty<KeyValuePair<string,StringValues>>();
+            if (PreserveAmbientQueryString)
             {
-                AddCurrentQueryString(routeValues);
+                blockedQuery = AddCurrentQueryString(routeValues);
             }
             
 
             if (Route != null)
             {
-                return urlHelper.Link(Route, routeValues);
-            }
-            else if (Action != null && Controller != null)
-            {
-                return urlHelper.Action(Action, Controller, routeValues);
+                return AppendBlockedQuery(urlHelper.Link(Route, routeValues), blockedQuery); // endpoint route return null when no route be found
             }
             else if (BaseHref != null)
             {
@@ -516,22 +508,66 @@ namespace cloudscribe.Web.Pagination
                 return $"{BaseHref}{start}{routeValues.Select(x => $"{x.Key}={x.Value}").Aggregate((current, next) => $"{current}&{next}")}";
             }
 
-            return pageNumber.ToString();
+            //========================================
+            //    it seems no need for the pure number
+            //=========================================
+
+            //return pageNumber.ToString();
+
+            return AppendBlockedQuery(urlHelper.Action(Action, Controller, routeValues), blockedQuery); // endpoint route return null when no route be found
         }
 
         /// <summary>
         /// add Current Query item to routeValues
         /// </summary>
         /// <param name="current">current routeValues</param>
-        private void AddCurrentQueryString(Dictionary<string, object> current)
+        /// <returns>a set of query can not be processed</returns>
+        private IEnumerable<KeyValuePair<string,StringValues>> AddCurrentQueryString(Dictionary<string, object> current)
         {
+            var blocked = Enumerable.Empty<KeyValuePair<string, StringValues>>();
             foreach (var item in urlHelper.ActionContext.HttpContext.Request.Query)
             {
-                if (!current.ContainsKey(item.Key))
+                if (ViewContext.ActionDescriptor.RouteValues.ContainsKey(item.Key))
+                {
+                    // IN MVC  there are max to three values [controller,action,area], not allocate a list but an IEnumerable
+                    blocked = blocked.Append(item);
+                }
+                else if (!current.ContainsKey(item.Key))
                 {
                     current.Add(item.Key, item.Value);
                 }
+                
             }
+            return blocked;
+        }
+
+        private string AppendBlockedQuery(string url, IEnumerable<KeyValuePair<string,StringValues>> blockedQuery)
+        {
+            if (string.IsNullOrEmpty(url))
+            {
+                return string.Empty; // fix NullReferenceException
+            }
+            if(blockedQuery == null && !blockedQuery.Any())
+            {
+                return url ?? string.Empty;
+            }
+            var flatedQuery = blockedQuery.OrderBy(x=>x.Key)
+                .SelectMany(x => x.Value.Select(v => new KeyValuePair<string, string>(x.Key, v)))
+                .Select(x=> $"{WebUtility.UrlEncode(x.Key)}={WebUtility.UrlEncode(x.Value)}");
+            var queryString = string.Join("&", flatedQuery);
+            if (string.IsNullOrEmpty(queryString))
+            {
+                return url ?? string.Empty;
+            }
+            if (url.Contains("?"))
+            {
+                return $"{url}&{queryString}";
+            }
+            else
+            {
+                return $"{url}?{queryString}";
+            }
+
         }
 
     }
