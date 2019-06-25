@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{84DF5591-19D1-4D4C-AC60-9D6571A1A90A}"
 EndProject
@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Web.Pagination"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Web.Pagination.Test", "test\cloudscribe.Web.Pagination.Test\cloudscribe.Web.Pagination.Test.csproj", "{BDEAA273-B584-4C5D-A8C2-FC247A0108A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cloudscribe.Pagination.Models", "src\cloudscribe.Pagination.Models\cloudscribe.Pagination.Models.csproj", "{92C951EE-17E8-4EAD-8D47-6EAC430912AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudscribe.Pagination.Models", "src\cloudscribe.Pagination.Models\cloudscribe.Pagination.Models.csproj", "{92C951EE-17E8-4EAD-8D47-6EAC430912AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PagingDemo.WebPages", "src\PagingDemo.WebPages\PagingDemo.WebPages.csproj", "{7AF492DE-183A-4BA3-801E-5FDABF6E90D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{92C951EE-17E8-4EAD-8D47-6EAC430912AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92C951EE-17E8-4EAD-8D47-6EAC430912AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92C951EE-17E8-4EAD-8D47-6EAC430912AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AF492DE-183A-4BA3-801E-5FDABF6E90D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AF492DE-183A-4BA3-801E-5FDABF6E90D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AF492DE-183A-4BA3-801E-5FDABF6E90D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AF492DE-183A-4BA3-801E-5FDABF6E90D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{97882F42-7E4E-4B0C-8A6A-747D79C9F1DB} = {84DF5591-19D1-4D4C-AC60-9D6571A1A90A}
 		{BDEAA273-B584-4C5D-A8C2-FC247A0108A1} = {1921FBD2-2941-407D-ACE4-4B32DE5A30FA}
 		{92C951EE-17E8-4EAD-8D47-6EAC430912AA} = {84DF5591-19D1-4D4C-AC60-9D6571A1A90A}
+		{7AF492DE-183A-4BA3-801E-5FDABF6E90D1} = {84DF5591-19D1-4D4C-AC60-9D6571A1A90A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9531AD35-B15E-4C36-AB46-7A93CDD6FCF6}
