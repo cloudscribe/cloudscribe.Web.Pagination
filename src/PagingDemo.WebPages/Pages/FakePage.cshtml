@@ -1,0 +1,15 @@
+﻿@page
+@model PagingDemo.WebPages.Pages.FakePageModel
+@{ 
+    int.TryParse(Request.Query["p"],out var p);
+}
+    <div>
+        <h1>this page test navigate from  the PageTagHelper</h1>
+        <a asp-page="./Index" class="btn btn-primary">go back</a>
+        <a asp-page="./Index" asp-route-id="@p" asp-route-p="@p" class="btn btn-primary">go back with Id=@p and p=@p</a>
+    </div>
+<div class="pre-scrollable">
+    @Json.Serialize(ViewContext.ActionDescriptor.RouteValues)
+    <hr />
+    @Json.Serialize(ViewContext.RouteData)
+</div>
