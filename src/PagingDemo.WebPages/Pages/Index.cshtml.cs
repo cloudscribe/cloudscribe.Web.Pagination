@@ -15,7 +15,7 @@ namespace PagingDemo.WebPages.Pages
             .Select(x => new SampleData { Id = x, Title = $"good Name ${x}" });
 
         public PagedResult<SampleData> List { get; set; }
-        public void OnGet(int p)
+        public void OnGet(int p = 1)
         {
             // do not use name "page" , your RazorPage take the `Page="/Index"` already
             var index = ToIndex(p);
