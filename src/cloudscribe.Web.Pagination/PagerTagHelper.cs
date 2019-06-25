@@ -50,25 +50,18 @@ namespace cloudscribe.Web.Pagination
 
         public PagerTagHelper(
             IUrlHelperFactory urlHelperFactory,
-            //IActionContextAccessor actionContextAccesor,
-            //IHtmlGenerator generator, 
             IBuildPaginationLinks linkBuilder = null)
         {
-            //Generator = generator;
             this.linkBuilder = linkBuilder ?? new PaginationLinkBuilder();
             this.urlHelperFactory = urlHelperFactory;
-            //this.actionContextAccesor = actionContextAccesor;
         }
 
         private IUrlHelperFactory urlHelperFactory;
-        //private IActionContextAccessor actionContextAccesor;
 
         [ViewContext]
         public ViewContext ViewContext { get; set; }
 
         private IBuildPaginationLinks linkBuilder;
-
-        //protected IHtmlGenerator Generator { get; }
 
         [HtmlAttributeName(PagingInfoAttributeName)]
         public PaginationSettings PagingModel { get; set; } = null;
@@ -514,16 +507,12 @@ namespace cloudscribe.Web.Pagination
 
                 return $"{BaseHref}{start}{routeValues.Select(x => $"{x.Key}={x.Value}").Aggregate((current, next) => $"{current}&{next}")}";
             }
-            //else if (PreserveAmbientQueryString ||   Action != null || Controller != null)
-            //{
-            //    return AppendBlockedQuery(urlHelper.Action(Action, Controller, routeValues), blockedQuery); // endpoint route return null when no route be found
-            //}
-
-            //return pageNumber.ToString();
 
             //========================================
             //    it seems no need for the pure number
             //=========================================
+
+            //return pageNumber.ToString();
 
             return AppendBlockedQuery(urlHelper.Action(Action, Controller, routeValues), blockedQuery); // endpoint route return null when no route be found
         }
@@ -540,7 +529,7 @@ namespace cloudscribe.Web.Pagination
             {
                 if (ViewContext.ActionDescriptor.RouteValues.ContainsKey(item.Key))
                 {
-                    // in MVC  there are max to three values [controller,action,area], not allocate a list but an IEnumerable
+                    // IN MVC  there are max to three values [controller,action,area], not allocate a list but an IEnumerable
                     blocked = blocked.Append(item);
                 }
                 else if (!current.ContainsKey(item.Key))
@@ -558,7 +547,7 @@ namespace cloudscribe.Web.Pagination
             {
                 return string.Empty; // fix NullReferenceException
             }
-            if(blockedQuery == null)
+            if(blockedQuery == null && !blockedQuery.Any())
             {
                 return url ?? string.Empty;
             }
