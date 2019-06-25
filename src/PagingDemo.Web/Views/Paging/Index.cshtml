@@ -43,7 +43,17 @@
               cs-pager-li-non-active-class="disabled"
               asp-route="pagingdemo1"
               asp-controller="Paging"
-              asp-action="Index"></cs-pager>
+              asp-action="Index" cs-preserve-ambient-querystring="false"></cs-pager>
+
+    
+</div>
+
+<div>
+    <p> this one automatic generate url from your current Action and Controller </p>
+    <cs-pager cs-paging-pagesize="@Model.Products.PageSize"
+              cs-paging-pagenumber="@Model.Products.PageNumber"
+              cs-paging-totalitems="@Model.Products.TotalItems"
+              cs-pagenumber-param="p"></cs-pager>
 </div>
 
 @section Scripts {
