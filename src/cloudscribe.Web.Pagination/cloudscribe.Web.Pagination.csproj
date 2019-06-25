@@ -3,8 +3,8 @@
   <PropertyGroup>
     <Description>an AspNetCore TagHelper for pagination</Description>
     <Copyright>Source Tree Solutions</Copyright>
-    <VersionPrefix>2.1.10</VersionPrefix>
-    <AssemblyVersion>2.1.10</AssemblyVersion>
+    <VersionPrefix>2.1.11</VersionPrefix>
+    <AssemblyVersion>2.1.11</AssemblyVersion>
     <Authors>Joe Audette</Authors>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageTags>cloudscribe;mvc;pagination;navigation;bootstrap</PackageTags>
