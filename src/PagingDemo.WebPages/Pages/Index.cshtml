@@ -1,0 +1,69 @@
+﻿@page "/{Id?}"
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.List.Data)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Title</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <cs-pager cs-paging-pagenumber="@Model.List.PageNumber"
+              cs-paging-totalitems="@Model.List.TotalItems"
+              cs-paging-pagesize="@Model.List.PageSize"
+              cs-pagenumber-param="p"
+              cs-pager-li-current-class="page-item active"
+              cs-pager-link-other-class="page-link"
+              cs-pager-link-current-class="page-link"></cs-pager>
+</div>
+
+<div>
+    <div class="alert alert-warning">
+        <h3>This is not a common case</h3>
+        <h4> below one route to another page</h4>
+    </div>
+    
+    <nav class="navigation">
+        <cs-pager cs-paging-pagenumber="@Model.List.PageNumber"
+                  cs-paging-totalitems="@Model.List.TotalItems"
+                  cs-paging-pagesize="@Model.List.PageSize"
+                  cs-pagenumber-param="p"
+                  asp-route-Page="/FakePage"
+                  cs-pager-li-current-class="page-item active"
+                  cs-pager-link-other-class="page-link"
+                  cs-pager-link-current-class="page-link"></cs-pager>
+    </nav>
+    
+    <div class="alert alert-warning">
+        
+        The <code>Url.Page("&lt;relative path&gt;")</code> calculate the
+        correct <strong>page path</strong> automatically (it's not a path but a path like identity ), but the <code>PageTagHelper</code>
+        use <code>Url.Action()</code> to create the link, thus you can not use path like
+        <code>./pageName</code> or <code>subfolder/pagename</code>;
+        you must use the value in <code>ViewContext.ActionDescriptor.RouteValues</code>
+    </div>
+</div>
+
+<div class="pre-scrollable">
+    @Json.Serialize(ViewContext.ActionDescriptor.RouteValues)
+    <hr />
+    @Json.Serialize(ViewContext.RouteData)
+</div>
