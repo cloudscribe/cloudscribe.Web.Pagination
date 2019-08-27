@@ -1,9 +1,9 @@
 language: csharp
 solution: cloudscribe.Web.Pagination.sln
 sudo: false
-dist: trusty
+dist: xenial
 mono: none
-dotnet: 2.1.500
+dotnet: 2.2.401
 env:
   global:
     - DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
