@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 
@@ -13,7 +14,7 @@ namespace PagingDemo.Web
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IHostingEnvironment env)
+        public Startup(IConfiguration configuration)
         {
             
             Configuration = configuration;
@@ -25,19 +26,20 @@ namespace PagingDemo.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCloudscribePagination();
-            services.AddMvc();
+            services.AddControllersWithViews();
+            services.AddRazorPages();
 
-           
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+               
                
             }
             else
@@ -46,19 +48,38 @@ namespace PagingDemo.Web
             }
 
             app.UseStaticFiles();
-            
-            app.UseMvc(routes =>
+
+            app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                    name: "pagingdemo1",
-                   template: "pager/{p:int?}"
+                   pattern: "pager/{p:int?}"
                    , defaults: new { controller = "Paging", action = "Index" }
                    );
 
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
+
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(
+            //       name: "pagingdemo1",
+            //       template: "pager/{p:int?}"
+            //       , defaults: new { controller = "Paging", action = "Index" }
+            //       );
+
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller=Home}/{action=Index}/{id?}");
+            //});
         }
     }
 }
