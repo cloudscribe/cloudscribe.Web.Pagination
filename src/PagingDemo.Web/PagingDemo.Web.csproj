@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     
     <UserSecretsId>aspnet-PagingDemo.Web-dd4ade04-aa17-411b-bb33-2277d7fea5e5</UserSecretsId>
     
