@@ -3,8 +3,7 @@
   <PropertyGroup>
     <Description>Pagination models</Description>
     <Copyright>Source Tree Solutions</Copyright>
-    <VersionPrefix>1.1.0</VersionPrefix>
-    <AssemblyVersion>1.1.0</AssemblyVersion>
+    <Version>1.1.0</Version>
     <Authors>Joe Audette</Authors>
     
     <TargetFramework>netstandard2.0</TargetFramework>
