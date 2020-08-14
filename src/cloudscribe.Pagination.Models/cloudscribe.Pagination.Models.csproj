@@ -3,11 +3,10 @@
   <PropertyGroup>
     <Description>Pagination models</Description>
     <Copyright>Source Tree Solutions</Copyright>
-    <VersionPrefix>1.0.5</VersionPrefix>
-    <AssemblyVersion>1.0.5</AssemblyVersion>
+    <Version>1.1.0</Version>
     <Authors>Joe Audette</Authors>
     
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
 
     <PackageTags>cloudscribe;pagination;models</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
