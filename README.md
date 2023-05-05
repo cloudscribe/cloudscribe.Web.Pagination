@@ -23,5 +23,4 @@ If you have questions please visit our community forums https://www.cloudscribe.
 | ------------- | ------------- |
 | [![Build status](https://ci.appveyor.com/api/projects/status/oe5lyktmbo8ucdyi/branch/master?svg=true)](https://ci.appveyor.com/project/joeaudette/cloudscribe-web-pagination/branch/master)  | [![Build Status](https://travis-ci.org/cloudscribe/cloudscribe.Web.Pagination.svg?branch=master)](https://travis-ci.org/cloudscribe/cloudscribe.Web.Pagination)  |
 
-Follow us on twitter @cloudscribeweb
 
