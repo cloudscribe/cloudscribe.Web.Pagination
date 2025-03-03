@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     
     <UserSecretsId>aspnet-PagingDemo.Web-dd4ade04-aa17-411b-bb33-2277d7fea5e5</UserSecretsId>
-    
+    <IsPackable>false</IsPackable>
     
   </PropertyGroup>
 
