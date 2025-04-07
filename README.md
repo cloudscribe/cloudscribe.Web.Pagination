@@ -18,9 +18,12 @@ If you have questions please visit our community forums https://www.cloudscribe.
 [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/cloudscribeweb) [![Twitter Follow](https://img.shields.io/twitter/follow/cloudscribeweb.svg?style=social&label=Follow)](https://twitter.com/cloudscribeweb)
 
 ### Build Status
-
+<!--
 | Windows  | Linux |
 | ------------- | ------------- |
 | [![Build status](https://ci.appveyor.com/api/projects/status/oe5lyktmbo8ucdyi/branch/master?svg=true)](https://ci.appveyor.com/project/joeaudette/cloudscribe-web-pagination/branch/master)  | [![Build Status](https://travis-ci.org/cloudscribe/cloudscribe.Web.Pagination.svg?branch=master)](https://travis-ci.org/cloudscribe/cloudscribe.Web.Pagination)  |
+-->
 
+<!-- Making badges prettier: -->
+[![CS Build Devel](https://img.shields.io/github/actions/workflow/status/cloudscribe/cloudscribe.Web.Pagination/cloudscribe-develop.yml?branch=develop&event=push&style=for-the-badge&label=🚀%20Develop%20Branch)](https://github.com/cloudscribe/cloudscribe.Web.Pagination/actions/workflows/cloudscribe-develop.yml)
 
