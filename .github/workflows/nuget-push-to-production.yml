@@ -52,5 +52,5 @@ jobs:
           echo "Found packages: $PACKAGES"
           for PACKAGE in $PACKAGES; do
             echo "Pushing $PACKAGE to nuget.org"
-            dotnet nuget push "$PACKAGE" --api-key "$NUGET_ORG_API_KEY" --source "https://api.nuget.org/v3/index.json" --skip-duplicate || { echo "WARNING - failed to upload package: $PACKAGE" && exit 1 }
+            dotnet nuget push "$PACKAGE" --api-key "$NUGET_ORG_API_KEY" --source "https://api.nuget.org/v3/index.json" --skip-duplicate || { echo "WARNING - failed to upload package: $PACKAGE"; exit 1; }
           done
